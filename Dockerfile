@@ -40,6 +40,5 @@ RUN groupadd --system --gid 1000 rails && \
     chown -R rails:rails /app
 USER rails
 
-# Start script: prepare DB, then boot puma bound to $PORT
-CMD bundle exec rails db:prepare && \
-    bundle exec puma -C config/puma.rb
+# Start script: boot puma bound to $PORT (no database)
+CMD bundle exec puma -C config/puma.rb
