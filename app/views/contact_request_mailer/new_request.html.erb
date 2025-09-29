@@ -1,8 +1,0 @@
-<h2>New Contact Request</h2>
-<p><strong>Name:</strong> <%= @contact_request.first_name %> <%= @contact_request.last_name %></p>
-<p><strong>Email:</strong> <%= @contact_request.email %></p>
-<p><strong>Phone:</strong> <%= @contact_request.phone.presence || "—" %></p>
-<p><strong>State:</strong> <%= @contact_request.state %></p>
-<p><strong>Referral:</strong> <%= @contact_request.referral.presence || "—" %></p>
-<p><strong>Subject:</strong> <%= @contact_request.subject %></p>
-<p><strong>Message:</strong><br><%= simple_format(@contact_request.message) %></p>

@@ -1,18 +1,6 @@
 module ContentHelper
-  def site_content(key, default = nil)
-    content = SiteContent.find_by(key: key)
-    return default if content.nil?
-
-    case content.content_type
-    when "html"
-      content.content.html_safe
-    when "markdown"
-      # You could add a markdown processor here if needed
-      content.content.html_safe
-    else
-      content.content
-    end
-  end
+  # Database-less setup: site_content method removed
+  # Content is now hardcoded in controllers
 
   def professional_photo(size = "medium", options = {})
     render "shared/professional_photo",
@@ -35,10 +23,5 @@ module ContentHelper
            subtitle: subtitle,
            primary_button: primary_button,
            secondary_button: secondary_button
-  end
-
-  def service_image_for(service, options = {})
-    filename = (service[:image] || service["image"]).presence || "placeholder-service.svg"
-    image_tag filename, options.merge(alt: service[:title] || service["title"])
   end
 end

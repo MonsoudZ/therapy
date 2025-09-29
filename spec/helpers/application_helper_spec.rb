@@ -1,41 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper, type: :helper do
-  describe "#site_content" do
-    let!(:site_content) { FactoryBot.create(:site_content, key: "test_key", content: "Test content", content_type: "text") }
-    let!(:html_content) { FactoryBot.create(:site_content, key: "html_key", content: "<strong>Bold text</strong>", content_type: "html") }
-
-    it "returns content for existing key" do
-      expect(helper.site_content("test_key")).to eq("Test content")
-    end
-
-    it "returns default content for non-existing key" do
-      expect(helper.site_content("non_existing_key", "Default content")).to eq("Default content")
-    end
-
-    it "returns nil for non-existing key without default" do
-      expect(helper.site_content("non_existing_key")).to be_nil
-    end
-
-    it "returns HTML content safely for html content_type" do
-      result = helper.site_content("html_key")
-      expect(result).to eq("<strong>Bold text</strong>")
-      expect(result).to be_html_safe
-    end
-
-    it "returns content safely for markdown content_type" do
-      markdown_content = FactoryBot.create(:site_content, key: "markdown_key", content: "# Heading", content_type: "markdown")
-      result = helper.site_content("markdown_key")
-      expect(result).to eq("# Heading")
-      expect(result).to be_html_safe
-    end
-
-    it "returns plain text for text content_type" do
-      result = helper.site_content("test_key")
-      expect(result).to eq("Test content")
-      expect(result).not_to be_html_safe
-    end
-  end
+  # Database-less setup: site_content method removed
 
   describe "#cta_button" do
     it "creates a link with default classes" do
