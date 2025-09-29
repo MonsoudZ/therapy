@@ -29,7 +29,6 @@ threads threads_count, threads_count
 
 # Railway deployment - bind to PORT
 port ENV.fetch("PORT", 3000)
-bind "tcp://0.0.0.0:#{ENV.fetch("PORT", 3000)}"
 
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
