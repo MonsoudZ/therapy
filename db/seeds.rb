@@ -8,6 +8,7 @@ admin = Admin.find_or_create_by(email: admin_email) do |a|
 end
 
 puts "Admin user created: #{admin.email}"
+puts "Admin password: #{admin_password}"
 
 # Create initial site content
 site_contents = [

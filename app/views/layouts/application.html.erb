@@ -27,16 +27,11 @@
       <%= render "shared/nav" %>
     </div>
 
-    <main class="mx-auto max-w-5xl px-6 py-10">
-      <% if notice.present? %>
-        <div class="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-green-800"><%= notice %></div>
-      <% end %>
-      <% if alert.present? %>
-        <div class="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-red-800"><%= alert %></div>
-      <% end %>
+        <main class="mx-auto max-w-5xl px-6 py-10">
+          <%= render "shared/flash_messages" %>
 
-      <%= yield %>
-    </main>
+          <%= yield %>
+        </main>
 
     <div class="mx-auto max-w-5xl px-6">
       <%= render "shared/footer" %>
