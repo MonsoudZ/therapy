@@ -1,0 +1,17 @@
+<%# 
+  Usage: render "shared/hero_section", title: "Individual + Relationship Therapy", subtitle: "Counseling for individuals and couples...", primary_button: {text: "Get Started", path: contact_path}, secondary_button: {text: "Learn More", path: about_path}
+%>
+<section class="py-8 sm:py-16 lg:py-24">
+  <div class="max-w-4xl mx-auto text-center px-4">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 sm:mb-8">
+      <%= title %>
+    </h1>
+    <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-8 sm:mb-12 max-w-3xl mx-auto">
+      <%= subtitle %>
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <%= cta_button primary_button[:text], primary_button[:path] %>
+      <%= secondary_button secondary_button[:text], secondary_button[:path] %>
+    </div>
+  </div>
+</section>

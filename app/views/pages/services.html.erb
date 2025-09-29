@@ -1,0 +1,28 @@
+<section class="py-8 sm:py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-8 sm:mb-16">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-8">Grow, Change, <em>Flourish</em>.</h1>
+      <p class="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
+        The therapy relationship is central. My approach draws from <em>relational EMDR, psychodynamic therapy, CBT, ACT, and mindfulness</em> to help you create lasting change.
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:gap-6 lg:grid-cols-2">
+      <% @services.each do |service| %>
+        <%= render "shared/service_card", service: service %>
+      <% end %>
+    </div>
+
+    <!-- Turbo Frame for service details -->
+    <div class="mt-8 sm:mt-12">
+      <% @services.each do |service| %>
+        <%= turbo_frame_tag "service-detail-#{service[:id]}" do %>
+          <!-- Content will be loaded here when link is clicked -->
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+
+<%= render "shared/cta_bar" %>

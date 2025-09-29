@@ -1,0 +1,64 @@
+services:
+  - id: 'trauma-resolution'
+    title: 'Trauma Resolution'
+    description: 'Using EMDR and other evidence-based approaches to help you process and heal from traumatic experiences. We''ll work together to build resilience and reclaim your sense of safety and control.'
+  
+  - id: 'anxiety'
+    title: 'Anxiety'
+    description: 'Whether it''s generalized anxiety, panic attacks, or social anxiety, we''ll explore the roots of your worry and develop practical tools to manage symptoms and build confidence.'
+  
+  - id: 'depression'
+    title: 'Depression'
+    description: 'Depression can feel overwhelming, but it''s treatable. We''ll work on understanding your patterns, challenging negative thought cycles, and rebuilding your sense of hope and purpose.'
+  
+  - id: 'grief-loss'
+    title: 'Grief and Loss'
+    description: 'Loss comes in many forms - death, relationships, jobs, dreams. I provide a safe space to process your grief, honor what you''ve lost, and find meaning in moving forward.'
+  
+  - id: 'family-origin'
+    title: 'Family of Origin Issues'
+    description: 'Our early relationships shape how we see ourselves and others. We''ll explore these patterns, understand their impact, and help you build healthier ways of relating.'
+  
+  - id: 'relationship-concerns'
+    title: 'Relationship Concerns'
+    description: 'Whether you''re struggling with communication, trust, intimacy, or conflict, we''ll work on building the skills and insights needed for more fulfilling connections.'
+  
+  - id: 'chronic-health'
+    title: 'Chronic Health Issues'
+    description: 'Living with chronic illness affects every aspect of life. We''ll address the emotional impact, coping strategies, and how to maintain your identity and relationships despite health challenges.'
+  
+  - id: 'military-families'
+    title: 'Military Members and Families'
+    description: 'Military life brings unique stressors and transitions. I understand the culture and challenges, providing specialized support for service members, veterans, and their families.'
+
+faqs:
+  - question: 'What can I expect during the free consultation?'
+    answer: 'We''ll meet by video or phone to see if it''s a fit. This is a chance for you to ask questions and for us to determine if we''re a good match for working together.'
+  
+  - question: 'What happens during the initial therapy session?'
+    answer: 'Complete intake forms; we focus on what brings you in and goals. I''ll ask about your history, current challenges, and what you hope to achieve in therapy.'
+  
+  - question: 'How often do you see clients?'
+    answer: 'Usually weekly; sometimes bi-weekly. We''ll determine the frequency that works best for your needs and schedule.'
+  
+  - question: 'Do you accept insurance?'
+    answer: 'Out-of-network; I provide documentation for reimbursement. Many clients are able to get partial or full reimbursement through their insurance.'
+  
+  - question: 'How long does therapy typically last?'
+    answer: 'It varies greatly depending on your goals and needs. Some people benefit from short-term work (3-6 months), while others find longer-term therapy more helpful.'
+  
+  - question: 'What if I''m not sure therapy is right for me?'
+    answer: 'That''s completely normal! The free consultation is a great way to explore this without any commitment. We can discuss your concerns and see if therapy feels like a good fit.'
+
+home_services:
+  - title: 'Individual Therapy'
+    description: 'One-on-one support for personal growth, healing, and transformation.'
+    link: 'services'
+  
+  - title: 'Relationship Therapy'
+    description: 'Couples counseling to strengthen connection and communication.'
+    link: 'services'
+  
+  - title: 'Assessment & Consultation'
+    description: 'Professional evaluations and consultation services.'
+    link: 'services'

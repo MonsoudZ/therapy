@@ -1,0 +1,50 @@
+<%
+  size_classes = {
+    "small" => "w-40 h-48 sm:w-48 sm:h-56",
+    "medium" => "w-56 h-64 sm:w-64 sm:h-80", 
+    "large" => "w-64 h-80 sm:w-80 sm:h-96"
+  }
+  
+  icon_sizes = {
+    "small" => "w-8 h-8",
+    "medium" => "w-12 h-12",
+    "large" => "w-12 h-12"
+  }
+  
+  circle_sizes = {
+    "small" => "w-12 h-12 sm:w-16 sm:h-16",
+    "medium" => "w-16 h-16 sm:w-20 sm:h-20",
+    "large" => "w-20 h-20 sm:w-24 sm:h-24"
+  }
+  
+  current_size = local_assigns[:size] || "medium"
+  show_title = local_assigns[:show_title] != false
+  show_subtitle = local_assigns[:show_subtitle] != false
+  additional_classes = local_assigns[:class] || ""
+%>
+
+<div class="relative group <%= additional_classes %>">
+  <!-- Professional photo placeholder -->
+  <div class="<%= size_classes[current_size] %> bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 rounded-3xl flex items-center justify-center shadow-2xl group-hover:shadow-3xl transition-all duration-300 overflow-hidden">
+    <!-- Subtle pattern overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+    <div class="relative z-10 text-center text-gray-600">
+      <div class="<%= circle_sizes[current_size] %> mx-auto mb-4 bg-white/80 rounded-full flex items-center justify-center shadow-lg">
+        <svg class="<%= icon_sizes[current_size] %> text-[#416970]" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+      <% if show_title %>
+        <p class="text-sm sm:text-lg font-semibold text-[#416970]">Professional Photo</p>
+      <% end %>
+      <% if show_subtitle %>
+        <p class="text-xs sm:text-sm text-gray-500 mt-1">Coming Soon</p>
+      <% end %>
+    </div>
+  </div>
+  
+  <!-- Enhanced decorative elements -->
+  <div class="absolute -top-4 -left-4 w-16 h-16 bg-[#416970] rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300"></div>
+  <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-blue-100 rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-300"></div>
+  <div class="absolute top-1/2 -left-3 w-6 h-6 bg-yellow-200 rounded-full opacity-60"></div>
+</div>

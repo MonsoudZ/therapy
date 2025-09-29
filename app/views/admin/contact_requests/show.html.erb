@@ -1,0 +1,66 @@
+<% content_for :page_title, "Contact Request Details" %>
+
+<div class="max-w-4xl">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-gray-800">Contact Request Details</h1>
+    <div class="flex space-x-3">
+      <%= link_to "Back to List", admin_contact_requests_path, 
+          class: "bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded" %>
+      <%= link_to "Delete", admin_contact_request_path(@contact_request), method: :delete, 
+          confirm: "Are you sure?", 
+          class: "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded" %>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-lg shadow overflow-hidden">
+    <div class="px-6 py-4 bg-gray-50 border-b">
+      <h2 class="text-lg font-semibold text-gray-800">
+        <%= @contact_request.first_name %> <%= @contact_request.last_name %>
+      </h2>
+      <p class="text-sm text-gray-600">
+        Received on <%= @contact_request.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+      </p>
+    </div>
+    
+    <div class="p-6 space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <p class="text-gray-900">
+            <%= mail_to @contact_request.email, @contact_request.email, 
+                class: "text-blue-600 hover:text-blue-800" %>
+          </p>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+          <p class="text-gray-900">
+            <%= @contact_request.phone.presence || "Not provided" %>
+          </p>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">State</label>
+          <p class="text-gray-900"><%= @contact_request.state %></p>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">How they found you</label>
+          <p class="text-gray-900"><%= @contact_request.referral.presence || "Not specified" %></p>
+        </div>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+        <p class="text-gray-900 text-lg"><%= @contact_request.subject %></p>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+        <div class="bg-gray-50 rounded-lg p-4">
+          <p class="text-gray-900 whitespace-pre-wrap"><%= @contact_request.message %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<% content_for :page_title, "Dashboard" %>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+  <div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">Total Contact Requests</h3>
+    <p class="text-3xl font-bold text-blue-600"><%= ContactRequest.count %></p>
+  </div>
+  
+  <div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">Site Content Items</h3>
+    <p class="text-3xl font-bold text-green-600"><%= SiteContent.count %></p>
+  </div>
+  
+  <div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">Recent Requests</h3>
+    <p class="text-3xl font-bold text-orange-600"><%= ContactRequest.where(created_at: 7.days.ago..).count %></p>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="bg-white rounded-lg shadow">
+    <div class="p-6 border-b">
+      <h3 class="text-lg font-semibold text-gray-800">Recent Contact Requests</h3>
+    </div>
+    <div class="p-6">
+      <% if @recent_contacts.any? %>
+        <div class="space-y-4">
+          <% @recent_contacts.each do |contact| %>
+            <div class="border-l-4 border-blue-500 pl-4">
+              <p class="font-medium"><%= contact.first_name %> <%= contact.last_name %></p>
+              <p class="text-sm text-gray-600"><%= contact.subject %></p>
+              <p class="text-xs text-gray-500"><%= contact.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+            </div>
+          <% end %>
+        </div>
+        <%= link_to "View All", admin_contact_requests_path, 
+            class: "mt-4 inline-block text-blue-600 hover:text-blue-800" %>
+      <% else %>
+        <p class="text-gray-500">No contact requests yet.</p>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="bg-white rounded-lg shadow">
+    <div class="p-6 border-b">
+      <h3 class="text-lg font-semibold text-gray-800">Quick Actions</h3>
+    </div>
+    <div class="p-6 space-y-4">
+      <%= link_to "Add New Content", new_admin_site_content_path, 
+          class: "block w-full text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded" %>
+      <%= link_to "Manage Content", admin_site_contents_path, 
+          class: "block w-full text-center bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded" %>
+      <%= link_to "View Contact Requests", admin_contact_requests_path, 
+          class: "block w-full text-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clinical Psychologist | Compassion. Curiosity. Change.</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+  <body class="min-h-dvh bg-gray-50 text-zinc-900 antialiased">
+    <div class="mx-auto max-w-5xl px-6">
+      <%= render "shared/nav" %>
+    </div>
+
+    <main class="mx-auto max-w-5xl px-6 py-10">
+      <% if notice.present? %>
+        <div class="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-green-800"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-red-800"><%= alert %></div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <div class="mx-auto max-w-5xl px-6">
+      <%= render "shared/footer" %>
+    </div>
+  </body>
+</html>

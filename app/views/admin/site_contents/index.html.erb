@@ -1,0 +1,44 @@
+<% content_for :page_title, "Site Content" %>
+
+<div class="flex justify-between items-center mb-6">
+  <h1 class="text-2xl font-bold text-gray-800">Site Content</h1>
+  <%= link_to "Add New Content", new_admin_site_content_path, 
+      class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded" %>
+</div>
+
+<div class="bg-white rounded-lg shadow overflow-hidden">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Key</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <% @site_contents.each do |content| %>
+        <tr>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <%= content.key %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+            <%= content.title %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <%= content.content_type %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+            <%= link_to "View", admin_site_content_path(content), 
+                class: "text-blue-600 hover:text-blue-900 mr-3" %>
+            <%= link_to "Edit", edit_admin_site_content_path(content), 
+                class: "text-green-600 hover:text-green-900 mr-3" %>
+            <%= link_to "Delete", admin_site_content_path(content), method: :delete, 
+                confirm: "Are you sure?", 
+                class: "text-red-600 hover:text-red-900" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
