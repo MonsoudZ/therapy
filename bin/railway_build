@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Starting Railway build process..."
+
+# Install dependencies
+echo "Installing Ruby gems..."
+bundle install --without development test
+
+# Precompile assets
+echo "Precompiling assets..."
+bundle exec rails assets:precompile
+
+# Create necessary directories
+echo "Creating directories..."
+mkdir -p storage log tmp/pids
+
+# Set permissions
+echo "Setting permissions..."
+chmod -R 755 storage log tmp
+
+echo "Railway build completed successfully!"
