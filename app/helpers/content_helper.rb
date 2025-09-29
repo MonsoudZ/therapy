@@ -36,4 +36,9 @@ module ContentHelper
            primary_button: primary_button,
            secondary_button: secondary_button
   end
+
+  def service_image_for(service, options = {})
+    filename = (service[:image] || service['image']).presence || "placeholder-service.svg"
+    image_tag filename, options.merge(alt: service[:title] || service['title'])
+  end
 end

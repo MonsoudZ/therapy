@@ -14,7 +14,19 @@ class PagesController < ApplicationController
 
   def service_detail
     @service = ::SiteDataService.find_service(params[:id])
-    redirect_to services_path unless @service
+    unless @service
+      redirect_to services_path and return
+    end
+
+    if turbo_frame_request?
+      render partial: "service_detail", locals: { service: @service }, layout: false and return
+    end
+  end
+
+  # Turbo helper to clear a frame
+  def service_detail_close
+    @service = { id: params[:id] }
+    render inline: view_context.turbo_frame_tag("service-detail-#{params[:id]}", ""), layout: false
   end
 
   def faqs

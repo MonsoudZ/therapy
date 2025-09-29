@@ -8,19 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-            }
-          }
-        }
-      }
-    </script>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    
   </head>
   <body class="min-h-dvh bg-gray-50 text-zinc-900 antialiased">
     <div class="mx-auto max-w-5xl px-6">

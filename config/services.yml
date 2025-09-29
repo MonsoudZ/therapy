@@ -2,34 +2,42 @@ services:
   - id: 'trauma-resolution'
     title: 'Trauma Resolution'
     description: 'Using EMDR and other evidence-based approaches to help you process and heal from traumatic experiences. We''ll work together to build resilience and reclaim your sense of safety and control.'
+    image: 'trauma.svg'
   
   - id: 'anxiety'
     title: 'Anxiety'
     description: 'Whether it''s generalized anxiety, panic attacks, or social anxiety, we''ll explore the roots of your worry and develop practical tools to manage symptoms and build confidence.'
+    image: 'anxiety.svg'
   
   - id: 'depression'
     title: 'Depression'
     description: 'Depression can feel overwhelming, but it''s treatable. We''ll work on understanding your patterns, challenging negative thought cycles, and rebuilding your sense of hope and purpose.'
+    image: 'depression.svg'
   
   - id: 'grief-loss'
     title: 'Grief and Loss'
     description: 'Loss comes in many forms - death, relationships, jobs, dreams. I provide a safe space to process your grief, honor what you''ve lost, and find meaning in moving forward.'
+    image: 'grief.svg'
   
   - id: 'family-origin'
     title: 'Family of Origin Issues'
     description: 'Our early relationships shape how we see ourselves and others. We''ll explore these patterns, understand their impact, and help you build healthier ways of relating.'
+    image: 'family.svg'
   
   - id: 'relationship-concerns'
     title: 'Relationship Concerns'
     description: 'Whether you''re struggling with communication, trust, intimacy, or conflict, we''ll work on building the skills and insights needed for more fulfilling connections.'
+    image: 'relationships.svg'
   
   - id: 'chronic-health'
     title: 'Chronic Health Issues'
     description: 'Living with chronic illness affects every aspect of life. We''ll address the emotional impact, coping strategies, and how to maintain your identity and relationships despite health challenges.'
+    image: 'health.svg'
   
   - id: 'military-families'
     title: 'Military Members and Families'
     description: 'Military life brings unique stressors and transitions. I understand the culture and challenges, providing specialized support for service members, veterans, and their families.'
+    image: 'military.svg'
 
 faqs:
   - question: 'What can I expect during the free consultation?'

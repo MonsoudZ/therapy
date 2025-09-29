@@ -6,7 +6,7 @@ gem "rails", "~> 8.0.3"
 gem "propshaft"
 # Dev/Test
 group :development, :test do
-  gem "sqlite3", "~> 1.7"
+  gem "sqlite3", ">= 2.1"
 end
 
 # Production

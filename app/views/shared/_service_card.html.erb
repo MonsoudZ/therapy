@@ -1,7 +1,16 @@
-<div class="rounded-2xl border-2 border-gray-200 p-4 sm:p-6 lg:p-8 transition-all duration-300 hover:shadow-lg hover:border-[#416970]">
-  <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#416970]"><%= service[:title] %></h3>
-  <p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-4"><%= service[:description] %></p>
-  <%= link_to "Learn More", service_detail_path(service[:id]), 
-      class: "text-[#416970] font-medium hover:underline text-sm sm:text-base",
-      data: { turbo_frame: "service-detail-#{service[:id]}" } %>
+<div class="rounded-xl border-2 border-gray-200 p-4 sm:p-5 transition-all duration-300 hover:shadow-lg hover:border-[#416970]">
+  <div class="flex items-start gap-4">
+    <%= service_image_for(service) %>
+
+    <div class="flex-1">
+      <%= link_to service_detail_path(service[:id]), data: { turbo_frame: "service-detail-#{service[:id]}", turbo_prefetch: false }, class: "w-full text-left flex items-center justify-between gap-3" do %>
+        <h3 class="text-lg sm:text-xl font-bold text-[#416970]"><%= service[:title] %></h3>
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#416970] text-[#416970] text-base leading-none select-none">+</span>
+      <% end %>
+
+      <div class="mt-2 sm:mt-3">
+        <%= turbo_frame_tag "service-detail-#{service[:id]}" %>
+      </div>
+    </div>
+  </div>
 </div>

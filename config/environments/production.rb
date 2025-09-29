@@ -36,7 +36,7 @@ Rails.application.configure do
   config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = false # Railway handles SSL termination
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
@@ -61,8 +61,8 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RAILS_SERVE_STATIC_ASSETS'].present?
   
   # Allow Railway hosts
-  config.hosts << ".up.railway.app"
   config.hosts << ".railway.app"
+  config.hosts << ".up.railway.app"
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
   config.active_job.queue_adapter = :solid_queue

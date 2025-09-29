@@ -16,6 +16,10 @@ module ColumbineTherapy
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    # Ensure concerns are autoloaded/eager loaded (e.g., `app/concerns/searchable.rb`)
+    config.autoload_paths << Rails.root.join("app/concerns")
+    config.eager_load_paths << Rails.root.join("app/concerns")
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

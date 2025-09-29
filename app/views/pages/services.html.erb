@@ -12,15 +12,6 @@
         <%= render "shared/service_card", service: service %>
       <% end %>
     </div>
-
-    <!-- Turbo Frame for service details -->
-    <div class="mt-8 sm:mt-12">
-      <% @services.each do |service| %>
-        <%= turbo_frame_tag "service-detail-#{service[:id]}" do %>
-          <!-- Content will be loaded here when link is clicked -->
-        <% end %>
-      <% end %>
-    </div>
   </div>
 </section>
 

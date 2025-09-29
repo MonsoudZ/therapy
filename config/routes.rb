@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/about",    to: "pages#about"
   get "/services", to: "pages#services"
   get "/services/:id", to: "pages#service_detail", as: :service_detail
+  get "/services/:id/close", to: "pages#service_detail_close", as: :close_service_detail
   get "/faqs",     to: "pages#faqs"
 
   resources :contact_requests, only: [:new, :create]
@@ -21,13 +22,8 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-      # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-      # Can be used by load balancers and uptime monitors to verify that the app is live.
-      get "up" => "health#show", as: :rails_health_check
-      
-      # Additional health checks
-      get "health" => "health#show"
-      get "health/detailed" => "health#detailed"
+  # Health check endpoint for Railway
+  get "up" => "rails/health#show"
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
