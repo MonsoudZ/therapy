@@ -59,6 +59,10 @@ Rails.application.configure do
   
   # Ensure static files are served in production
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RAILS_SERVE_STATIC_ASSETS'].present?
+  
+  # Allow Railway hosts
+  config.hosts << ".up.railway.app"
+  config.hosts << ".railway.app"
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
   config.active_job.queue_adapter = :solid_queue
