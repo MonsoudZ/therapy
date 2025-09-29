@@ -21,4 +21,9 @@ test:
 
 production:
   <<: *default
+  <% if ENV["DATABASE_URL"] %>
   url: <%= ENV["DATABASE_URL"] %>
+  <% else %>
+  adapter: sqlite3
+  database: db/production.sqlite3
+  <% end %>

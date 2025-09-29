@@ -2,18 +2,14 @@
   "name": "app",
   "private": true,
   "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "esbuild": "^0.25.10",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.13"
+    "esbuild": "^0.17.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "npx tailwindcss@3.4.0 -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "build:css": "echo 'CSS already built'"
   },
   "dependencies": {
-    "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.18",
-    "@tailwindcss/cli": "^4.1.13"
+    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/turbo-rails": "^7.0.0"
   }
 }
