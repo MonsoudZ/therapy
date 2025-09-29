@@ -1,25 +1,22 @@
-# PostgreSQL Production Database Configuration
-# Use this if you want to use PostgreSQL in production instead of SQLite
-
+# Production database configuration for Railway
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 production:
   primary:
     <<: *default
-    url: <%= ENV.fetch("DATABASE_URL") { "postgresql://username:password@localhost:5432/therapy_production" } %>
+    database: storage/production.sqlite3
   cache:
     <<: *default
-    url: <%= ENV.fetch("CACHE_DATABASE_URL") { "postgresql://username:password@localhost:5432/therapy_production_cache" } %>
+    database: storage/production_cache.sqlite3
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
-    url: <%= ENV.fetch("QUEUE_DATABASE_URL") { "postgresql://username:password@localhost:5432/therapy_production_queue" } %>
+    database: storage/production_queue.sqlite3
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    url: <%= ENV.fetch("CABLE_DATABASE_URL") { "postgresql://username:password@localhost:5432/therapy_production_cable" } %>
+    database: storage/production_cable.sqlite3
     migrations_paths: db/cable_migrate

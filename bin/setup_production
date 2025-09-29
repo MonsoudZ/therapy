@@ -1,105 +1,18 @@
-#!/usr/bin/env ruby
-# frozen_string_literal: true
+#!/usr/bin/env bash
+set -e
 
-# This script sets up the application for production deployment
+echo "Setting up production environment..."
 
-require "fileutils"
+# Create storage directory
+mkdir -p storage
 
-# Add the project root to the load path
-project_root = File.expand_path("..", __dir__)
-$LOAD_PATH.unshift(project_root) unless $LOAD_PATH.include?(project_root)
+# Create log directory
+mkdir -p log
 
-require "bundler/setup"
-require "rails"
-require "rails/generators"
-require "rails/generators/rails/app/app_generator"
+# Set up database
+echo "Setting up database..."
+bin/rails db:create RAILS_ENV=production
+bin/rails db:migrate RAILS_ENV=production
+bin/rails db:seed RAILS_ENV=production
 
-def system!(*args)
-  system(*args, exception: true)
-end
-
-def setup_production
-  puts "🚀 Setting up production environment..."
-
-  # Check if we're in production
-  if ENV["RAILS_ENV"] != "production"
-    puts "⚠️  Warning: This script is designed for production setup"
-    puts "   Current environment: #{ENV.fetch("RAILS_ENV", "development")}"
-  end
-
-  # Create necessary directories
-  puts "📁 Creating directories..."
-  FileUtils.mkdir_p("storage")
-  FileUtils.mkdir_p("log")
-  FileUtils.mkdir_p("tmp/pids")
-
-  # Set up database
-  puts "🗄️  Setting up database..."
-  system!("rails db:create")
-  system!("rails db:migrate")
-  
-  # Seed the database
-  puts "🌱 Seeding database..."
-  system!("rails db:seed")
-
-  # Precompile assets
-  puts "🎨 Precompiling assets..."
-  system!("rails assets:precompile")
-
-  # Set up admin user if not exists
-  puts "👤 Setting up admin user..."
-  begin
-    if Admin.count == 0
-      admin = Admin.create!(
-        email: ENV.fetch("ADMIN_EMAIL", "admin@angelakeeley.com"),
-        password: ENV.fetch("ADMIN_PASSWORD", "password123"),
-        password_confirmation: ENV.fetch("ADMIN_PASSWORD", "password123")
-      )
-      puts "✅ Admin user created: #{admin.email}"
-    else
-      puts "✅ Admin user already exists"
-    end
-  rescue => e
-    puts "⚠️  Could not create admin user: #{e.message}"
-    puts "   You may need to create one manually in the Rails console"
-  end
-
-  # Verify setup
-  puts "🔍 Verifying setup..."
-  
-  # Check database connection
-  begin
-    ActiveRecord::Base.connection.execute("SELECT 1")
-    puts "✅ Database connection: OK"
-  rescue => e
-    puts "❌ Database connection failed: #{e.message}"
-  end
-
-  # Check email configuration
-  if ENV["SMTP_USERNAME"] && ENV["SMTP_PASSWORD"]
-    puts "✅ Email configuration: OK"
-  else
-    puts "⚠️  Email configuration: Not set (emails may not work)"
-  end
-
-  # Check host configuration
-  if ENV["RAILS_HOST"]
-    puts "✅ Host configuration: #{ENV['RAILS_HOST']}"
-  else
-    puts "⚠️  Host configuration: Not set (using default)"
-  end
-
-  puts "\n🎉 Production setup complete!"
-  puts "\n📋 Next steps:"
-  puts "1. Set up your domain DNS"
-  puts "2. Configure SSL/HTTPS"
-  puts "3. Test the contact form"
-  puts "4. Test the admin panel at /admins/sign_in"
-  puts "\n🔗 Admin login:"
-  puts "   Email: #{ENV.fetch("ADMIN_EMAIL", "admin@angelakeeley.com")}"
-  puts "   Password: #{ENV.fetch("ADMIN_PASSWORD", "password123")}"
-end
-
-if __FILE__ == $0
-  setup_production
-end
+echo "Production setup complete!"

@@ -23,6 +23,14 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
+  
+  # Ensure storage directory exists
+  config.active_storage.service_configurations = {
+    local: {
+      service: "Disk",
+      root: Rails.root.join("storage")
+    }
+  }
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   config.assume_ssl = true
