@@ -1,0 +1,25 @@
+# PostgreSQL Production Database Configuration
+# Use this if you want to use PostgreSQL in production instead of SQLite
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+production:
+  primary:
+    <<: *default
+    url: <%= ENV.fetch("DATABASE_URL") { "postgresql://username:password@localhost:5432/therapy_production" } %>
+  cache:
+    <<: *default
+    url: <%= ENV.fetch("CACHE_DATABASE_URL") { "postgresql://username:password@localhost:5432/therapy_production_cache" } %>
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    url: <%= ENV.fetch("QUEUE_DATABASE_URL") { "postgresql://username:password@localhost:5432/therapy_production_queue" } %>
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    url: <%= ENV.fetch("CABLE_DATABASE_URL") { "postgresql://username:password@localhost:5432/therapy_production_cable" } %>
+    migrations_paths: db/cable_migrate

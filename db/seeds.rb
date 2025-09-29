@@ -1,7 +1,10 @@
 # Create admin user
-admin = Admin.find_or_create_by(email: 'admin@angelakeeley.com') do |a|
-  a.password = 'password123'
-  a.password_confirmation = 'password123'
+admin_email = ENV.fetch("ADMIN_EMAIL", "admin@angelakeeley.com")
+admin_password = ENV.fetch("ADMIN_PASSWORD", "password123")
+
+admin = Admin.find_or_create_by(email: admin_email) do |a|
+  a.password = admin_password
+  a.password_confirmation = admin_password
 end
 
 puts "Admin user created: #{admin.email}"
