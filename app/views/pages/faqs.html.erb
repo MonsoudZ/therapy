@@ -1,0 +1,21 @@
+<section class="py-16">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16">
+      <h1 class="text-5xl font-bold mb-8">Frequently Asked <em>Questions</em></h1>
+      <p class="text-xl text-gray-700 leading-relaxed">
+        Common questions about therapy, my approach, and what to expect.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      <% @faqs.each do |faq| %>
+        <%= render "shared/faq_item", faq: faq %>
+      <% end %>
+    </div>
+
+    <%= render "shared/cta_section", 
+        title: "Still have questions? I'd love to hear from you.",
+        button_text: "Get in Touch", 
+        button_path: contact_path %>
+  </div>
+</section>
