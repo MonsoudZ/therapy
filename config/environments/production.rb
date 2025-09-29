@@ -21,16 +21,7 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
-
-  # Ensure storage directory exists
-  config.active_storage.service_configurations = {
-    local: {
-      service: "Disk",
-      root: Rails.root.join("storage")
-    }
-  }
+  # No Active Storage configuration needed
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   config.assume_ssl = true
@@ -54,8 +45,8 @@ Rails.application.configure do
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
-  # Replace the default in-process memory cache store with a durable alternative.
-  config.cache_store = :solid_cache_store
+  # Use memory cache store (no database needed)
+  config.cache_store = :memory_store
 
   # Ensure static files are served in production
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RAILS_SERVE_STATIC_ASSETS"].present?
@@ -64,27 +55,23 @@ Rails.application.configure do
   config.hosts << ".railway.app"
   config.hosts << ".up.railway.app"
 
-  # Replace the default in-process and non-durable queuing backend for Active Job.
-  config.active_job.queue_adapter = :solid_queue
-  config.solid_queue.connects_to = { database: { writing: :queue } }
+  # Use async adapter for Active Job (no database needed)
+  config.active_job.queue_adapter = :async
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = {
-    host: ENV.fetch("RAILS_HOST", "your-domain.com"),
-    protocol: "https"
-  }
+  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "localhost:3000") } # e.g. myapp.up.railway.app
 
-  # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
+  # Mail delivery (SMTP via env vars)
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: ENV.fetch("SMTP_USERNAME", Rails.application.credentials.dig(:smtp, :user_name)),
-    password: ENV.fetch("SMTP_PASSWORD", Rails.application.credentials.dig(:smtp, :password)),
-    address: ENV.fetch("SMTP_ADDRESS", "smtp.gmail.com"),
-    port: ENV.fetch("SMTP_PORT", 587).to_i,
+    address:        ENV.fetch("SMTP_ADDRESS", "smtp.gmail.com"),      # e.g. "smtp.sendgrid.net"
+    port:           ENV.fetch("SMTP_PORT", 587).to_i,
+    user_name:      ENV.fetch("SMTP_USERNAME", "dummy"),
+    password:       ENV.fetch("SMTP_PASSWORD", "dummy"),
     authentication: :plain,
     enable_starttls_auto: true
   }
@@ -93,11 +80,7 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
-  # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
-
-  # Only use :id for inspections in production.
-  config.active_record.attributes_for_inspect = [ :id ]
+  # No Active Record configuration needed
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   config.hosts = [

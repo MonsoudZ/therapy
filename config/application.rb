@@ -1,6 +1,14 @@
 require_relative "boot"
 
-require "rails/all"
+# require "rails/all"
+require "action_controller/railtie"
+require "action_view/railtie"
+require "action_mailer/railtie"
+require "active_job/railtie"
+# require "active_record/railtie" # ❌ no DB
+# require "active_storage/engine" # ❌ if you don't need uploads
+# require "action_text/engine"    # ❌ needs AR
+# require "sprockets/railtie"       # using propshaft instead
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -19,6 +27,9 @@ module ColumbineTherapy
     # Ensure concerns are autoloaded/eager loaded (e.g., `app/concerns/searchable.rb`)
     config.autoload_paths << Rails.root.join("app/concerns")
     config.eager_load_paths << Rails.root.join("app/concerns")
+
+    # prevent AR files on generators
+    config.generators { |g| g.orm nil }
 
     # Configuration for the application, engines, and railties goes here.
     #

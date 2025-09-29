@@ -4,15 +4,7 @@ source "https://rubygems.org"
 gem "rails", "~> 8.0.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
-# Dev/Test
-group :development, :test do
-  gem "sqlite3", ">= 2.1"
-end
-
-# Production
-group :production do
-  gem "pg", "~> 1.6"
-end
+# No database gems needed
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
@@ -32,10 +24,7 @@ gem "jbuilder"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
+# No database-backed adapters needed
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -60,15 +49,11 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-# Authentication
-gem "devise"
+# No authentication needed for static site
 
 group :test do
   # RSpec testing framework
   gem "rspec-rails"
-  gem "factory_bot_rails"
-  gem "faker"
-  gem "shoulda-matchers"
   gem "rails-controller-testing"
 end
 
@@ -77,8 +62,4 @@ group :development do
   gem "web-console"
 end
 
-group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-end
+# No system testing needed for static site
