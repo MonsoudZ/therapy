@@ -52,8 +52,11 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RAILS_SERVE_STATIC_ASSETS"].present?
 
   # Allow Railway hosts
-  config.hosts << ".railway.app"
-  config.hosts << ".up.railway.app"
+  config.hosts += [
+    "web-production-07b1.up.railway.app",
+    /.*\.up\.railway\.app/,
+    /.*\.railway\.app/
+  ]
 
   # Use async adapter for Active Job (no database needed)
   config.active_job.queue_adapter = :async
