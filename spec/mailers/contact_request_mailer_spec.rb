@@ -7,8 +7,8 @@ RSpec.describe ContactRequestMailer, type: :mailer do
 
     it 'renders the headers' do
       expect(mail.subject).to eq("New Contact Request: #{contact_request.subject}")
-      expect(mail.to).to eq(['owner@example.com'])
-      expect(mail.from).to eq(['no-reply@example.com'])
+      expect(mail.to).to eq([ 'owner@example.com' ])
+      expect(mail.from).to eq([ 'no-reply@example.com' ])
     end
 
     it 'renders the body' do

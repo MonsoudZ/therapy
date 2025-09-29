@@ -8,7 +8,7 @@ RSpec.describe ContactRequest, type: :model do
     it { should validate_presence_of(:state) }
     it { should validate_presence_of(:subject) }
     it { should validate_presence_of(:message) }
-    
+
     it { should allow_value('test@example.com').for(:email) }
     it { should allow_value('user@domain.org').for(:email) }
     it { should_not allow_value('invalid-email').for(:email) }
@@ -29,7 +29,7 @@ RSpec.describe ContactRequest, type: :model do
 
   describe 'instance methods' do
     let(:contact_request) { build(:contact_request) }
-    
+
     it 'is valid with valid attributes' do
       expect(contact_request).to be_valid
     end

@@ -6,10 +6,10 @@ RSpec.describe SiteContent, type: :model do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:content) }
     it { is_expected.to validate_presence_of(:content_type) }
-    
+
     it { is_expected.to validate_uniqueness_of(:key) }
-    
-    it { is_expected.to validate_inclusion_of(:content_type).in_array(['text', 'html', 'markdown']) }
+
+    it { is_expected.to validate_inclusion_of(:content_type).in_array([ 'text', 'html', 'markdown' ]) }
   end
 
   describe "instance methods" do

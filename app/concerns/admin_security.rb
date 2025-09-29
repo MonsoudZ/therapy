@@ -2,7 +2,7 @@ module AdminSecurity
   extend ActiveSupport::Concern
 
   def log_admin_action(action, resource = nil)
-    Rails.logger.info "Admin #{current_admin.email} performed #{action}" + 
+    Rails.logger.info "Admin #{current_admin.email} performed #{action}" +
                       (resource ? " on #{resource.class.name} ##{resource.id}" : "")
   end
 

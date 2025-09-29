@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/services/:id/close", to: "pages#service_detail_close", as: :close_service_detail
   get "/faqs",     to: "pages#faqs"
 
-  resources :contact_requests, only: [:new, :create]
+  resources :contact_requests, only: [ :new, :create ]
 
   # Friendly path
   get "/contact", to: "contact_requests#new"
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dashboard#index"
     resources :site_contents
-    resources :contact_requests, only: [:index, :show, :destroy]
+    resources :contact_requests, only: [ :index, :show, :destroy ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

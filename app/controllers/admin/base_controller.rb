@@ -1,4 +1,4 @@
 class Admin::BaseController < ApplicationController
   include AdminAuthentication
-  layout 'admin'
+  layout "admin"
 end

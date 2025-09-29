@@ -76,7 +76,7 @@ RSpec.configure do |config|
   # Devise test helpers
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
-  
+
   # Configure Devise for Admin model in tests
   config.before(:each, type: :controller) do
     @request.env["devise.mapping"] = Devise.mappings[:admin]

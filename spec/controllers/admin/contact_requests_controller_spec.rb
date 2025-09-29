@@ -26,7 +26,7 @@ RSpec.describe Admin::ContactRequestsController, type: :controller do
     it "orders contact_requests by created_at desc" do
       old_request = FactoryBot.create(:contact_request, created_at: 2.days.ago)
       new_request = FactoryBot.create(:contact_request, created_at: 1.day.ago)
-      
+
       get :index
       contact_requests = assigns(:contact_requests)
       expect(contact_requests.first).to eq(new_request)

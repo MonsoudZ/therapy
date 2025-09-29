@@ -1,5 +1,5 @@
 class Admin::SiteContentsController < Admin::BaseController
-  before_action :set_site_content, only: [:show, :edit, :update, :destroy]
+  before_action :set_site_content, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @site_contents = SiteContent.recent
@@ -16,7 +16,7 @@ class Admin::SiteContentsController < Admin::BaseController
     @site_content = SiteContent.new(site_content_params)
     if @site_content.save
       SiteDataService.clear_cache! if defined?(SiteDataService)
-      redirect_to admin_site_content_path(@site_content), notice: 'Site content was successfully created.'
+      redirect_to admin_site_content_path(@site_content), notice: "Site content was successfully created."
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Admin::SiteContentsController < Admin::BaseController
   def update
     if @site_content.update(site_content_params)
       SiteDataService.clear_cache! if defined?(SiteDataService)
-      redirect_to admin_site_content_path(@site_content), notice: 'Site content was successfully updated.'
+      redirect_to admin_site_content_path(@site_content), notice: "Site content was successfully updated."
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class Admin::SiteContentsController < Admin::BaseController
   def destroy
     @site_content.destroy
     SiteDataService.clear_cache! if defined?(SiteDataService)
-    redirect_to admin_site_contents_path, notice: 'Site content was successfully deleted.'
+    redirect_to admin_site_contents_path, notice: "Site content was successfully deleted."
   end
 
   private

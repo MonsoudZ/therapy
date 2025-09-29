@@ -38,7 +38,7 @@ RSpec.describe "Admin Workflow", type: :request do
 
     it "allows editing existing site content" do
       site_content = FactoryBot.create(:site_content, key: "editable_content")
-      
+
       get edit_admin_site_content_path(site_content)
       expect(response).to have_http_status(:success)
 
@@ -52,7 +52,7 @@ RSpec.describe "Admin Workflow", type: :request do
 
     it "allows deleting site content" do
       site_content = FactoryBot.create(:site_content)
-      
+
       expect {
         delete admin_site_content_path(site_content)
       }.to change(SiteContent, :count).by(-1)
@@ -66,7 +66,7 @@ RSpec.describe "Admin Workflow", type: :request do
 
     it "allows viewing contact requests" do
       contact_request = FactoryBot.create(:contact_request)
-      
+
       get admin_contact_requests_path
       expect(response).to have_http_status(:success)
       expect(response.body).to include(contact_request.first_name)
@@ -74,7 +74,7 @@ RSpec.describe "Admin Workflow", type: :request do
 
     it "allows viewing individual contact request details" do
       contact_request = FactoryBot.create(:contact_request, subject: "Test Subject")
-      
+
       get admin_contact_request_path(contact_request)
       expect(response).to have_http_status(:success)
       expect(response.body).to include("Test Subject")
@@ -82,7 +82,7 @@ RSpec.describe "Admin Workflow", type: :request do
 
     it "allows deleting contact requests" do
       contact_request = FactoryBot.create(:contact_request)
-      
+
       expect {
         delete admin_contact_request_path(contact_request)
       }.to change(ContactRequest, :count).by(-1)
@@ -97,7 +97,7 @@ RSpec.describe "Admin Workflow", type: :request do
     it "shows statistics on dashboard" do
       FactoryBot.create(:contact_request)
       FactoryBot.create(:site_content)
-      
+
       get admin_root_path
       expect(response).to have_http_status(:success)
       expect(response.body).to include("Total Contact Requests")
@@ -106,7 +106,7 @@ RSpec.describe "Admin Workflow", type: :request do
 
     it "shows recent contact requests" do
       contact_request = FactoryBot.create(:contact_request, first_name: "John", last_name: "Doe")
-      
+
       get admin_root_path
       expect(response.body).to include("John Doe")
     end

@@ -2,7 +2,7 @@ module ContentHelper
   def site_content(key, default = nil)
     content = SiteContent.find_by(key: key)
     return default if content.nil?
-    
+
     case content.content_type
     when "html"
       content.content.html_safe
@@ -15,15 +15,15 @@ module ContentHelper
   end
 
   def professional_photo(size = "medium", options = {})
-    render "shared/professional_photo", 
-           size: size, 
+    render "shared/professional_photo",
+           size: size,
            show_title: options[:show_title] != false,
            show_subtitle: options[:show_subtitle] != false,
            class: options[:class]
   end
 
   def cta_section(title, button_text, button_path, options = {})
-    render "shared/cta_section", 
+    render "shared/cta_section",
            title: title,
            button_text: button_text,
            button_path: button_path
@@ -38,7 +38,7 @@ module ContentHelper
   end
 
   def service_image_for(service, options = {})
-    filename = (service[:image] || service['image']).presence || "placeholder-service.svg"
-    image_tag filename, options.merge(alt: service[:title] || service['title'])
+    filename = (service[:image] || service["image"]).presence || "placeholder-service.svg"
+    image_tag filename, options.merge(alt: service[:title] || service["title"])
   end
 end

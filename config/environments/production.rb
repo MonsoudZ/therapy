@@ -23,7 +23,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
-  
+
   # Ensure storage directory exists
   config.active_storage.service_configurations = {
     local: {
@@ -56,10 +56,10 @@ Rails.application.configure do
 
   # Replace the default in-process memory cache store with a durable alternative.
   config.cache_store = :solid_cache_store
-  
+
   # Ensure static files are served in production
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RAILS_SERVE_STATIC_ASSETS'].present?
-  
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RAILS_SERVE_STATIC_ASSETS"].present?
+
   # Allow Railway hosts
   config.hosts << ".railway.app"
   config.hosts << ".up.railway.app"
@@ -73,7 +73,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { 
+  config.action_mailer.default_url_options = {
     host: ENV.fetch("RAILS_HOST", "your-domain.com"),
     protocol: "https"
   }
@@ -104,7 +104,7 @@ Rails.application.configure do
     ENV.fetch("RAILS_HOST", "your-domain.com"),
     /.*\.#{ENV.fetch("RAILS_HOST", "your-domain.com").split('.').last(2).join('.')}/
   ]
-  
+
   # Skip DNS rebinding protection for the default health check endpoint.
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end

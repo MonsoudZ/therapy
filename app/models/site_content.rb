@@ -14,14 +14,14 @@ class SiteContent < ApplicationRecord
   end
 
   def html_content?
-    content_type == 'html'
+    content_type == "html"
   end
 
   def markdown_content?
-    content_type == 'markdown'
+    content_type == "markdown"
   end
 
   def text_content?
-    content_type == 'text'
+    content_type == "text"
   end
 end

@@ -92,20 +92,20 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe "#professional_photo" do
     it "renders the professional photo partial" do
-      expect(helper).to receive(:render).with("shared/professional_photo", 
-        size: "medium", 
-        show_title: true, 
-        show_subtitle: true, 
+      expect(helper).to receive(:render).with("shared/professional_photo",
+        size: "medium",
+        show_title: true,
+        show_subtitle: true,
         class: nil
       )
       helper.professional_photo
     end
 
     it "passes custom options" do
-      expect(helper).to receive(:render).with("shared/professional_photo", 
-        size: "large", 
-        show_title: false, 
-        show_subtitle: false, 
+      expect(helper).to receive(:render).with("shared/professional_photo",
+        size: "large",
+        show_title: false,
+        show_subtitle: false,
         class: "custom-class"
       )
       helper.professional_photo("large", show_title: false, show_subtitle: false, class: "custom-class")

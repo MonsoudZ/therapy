@@ -7,7 +7,7 @@ FactoryBot.define do
     state { Faker::Address.state_abbr }
     subject { Faker::Lorem.sentence(word_count: 3) }
     message { Faker::Lorem.paragraph(sentence_count: 3) }
-    referral { ['Google', 'Psychology Today', 'Friend/Colleague', 'Other'].sample }
+    referral { [ 'Google', 'Psychology Today', 'Friend/Colleague', 'Other' ].sample }
 
     trait :invalid do
       first_name { nil }
