@@ -1,5 +1,5 @@
 # Create admin user
-admin_email = ENV.fetch("ADMIN_EMAIL", "admin@angelakeeley.com")
+admin_email = ENV.fetch("ADMIN_EMAIL", "admin@columbinetherapy.com")
 admin_password = ENV.fetch("ADMIN_PASSWORD", "password123")
 
 admin = Admin.find_or_create_by(email: admin_email) do |a|

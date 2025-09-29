@@ -53,15 +53,15 @@ Set these in your hosting platform:
 ### Required Variables
 ```
 RAILS_ENV=production
-RAILS_HOST=your-domain.com
+RAILS_HOST=columbinetherapy.com
 SECRET_KEY_BASE=generate-with-rails-secret
 RAILS_MASTER_KEY=your-master-key
 ```
 
 ### Email Variables
 ```
-CONTACT_TO_EMAIL=angela@angelakeeley.com
-CONTACT_FROM_EMAIL=noreply@your-domain.com
+CONTACT_TO_EMAIL=angela@toocolumbinetherapy.com
+CONTACT_FROM_EMAIL=noreply@columbinetherapy.com
 SMTP_USERNAME=your-smtp-username
 SMTP_PASSWORD=your-smtp-password
 SMTP_ADDRESS=your-smtp-server
