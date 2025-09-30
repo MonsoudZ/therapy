@@ -51,12 +51,18 @@ Rails.application.configure do
   # Ensure static files are served in production
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RAILS_SERVE_STATIC_ASSETS"].present?
 
-  # Allow Railway hosts
-  config.hosts += [
-    "web-production-07b1.up.railway.app",
-    /.*\.up\.railway\.app/,
-    /.*\.railway\.app/
-  ]
+  # Allow Railway domains
+  config.hosts << "web-production-07b1.up.railway.app"
+  config.hosts << /.*\.up\.railway\.app/
+  config.hosts << /.*\.railway\.app/
+
+  # (Optional) env-driven, so you don't hardcode
+  if ENV["RAILS_ALLOWED_HOSTS"].present?
+    ENV["RAILS_ALLOWED_HOSTS"].split(",").each do |h|
+      h = h.strip
+      config.hosts << (h.start_with?("/") && h.end_with?("/") ? Regexp.new(h[1..-2]) : h)
+    end
+  end
 
   # Use async adapter for Active Job (no database needed)
   config.active_job.queue_adapter = :async
