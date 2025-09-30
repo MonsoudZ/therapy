@@ -93,13 +93,6 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
-  # No Active Record configuration needed
-
-  # Enable DNS rebinding protection and other `Host` header attacks.
-  config.hosts = [
-    ENV.fetch("RAILS_HOST", "your-domain.com"),
-    /.*\.#{ENV.fetch("RAILS_HOST", "your-domain.com").split('.').last(2).join('.')}/
-  ]
 
   # Skip DNS rebinding protection for the default health check endpoint.
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
