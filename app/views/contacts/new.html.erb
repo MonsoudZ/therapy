@@ -9,17 +9,17 @@
   <%= form_with url: contact_path, method: :post, local: true, class: "space-y-6" do |f| %>
     <div>
       <%= f.label :name, "Name", class: "block text-sm font-medium text-gray-700 mb-2" %>
-      <%= f.text_field :name, required: true, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+      <%= f.text_field :name, required: true, class: "w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
     </div>
     
     <div>
       <%= f.label :email, "Email", class: "block text-sm font-medium text-gray-700 mb-2" %>
-      <%= f.email_field :email, required: true, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+      <%= f.email_field :email, required: true, class: "w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
     </div>
 
     <div>
       <%= f.label :phone, "Phone (optional)", class: "block text-sm font-medium text-gray-700 mb-2" %>
-      <%= f.telephone_field :phone, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+      <%= f.telephone_field :phone, class: "w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
     </div>
 
     <div>
@@ -27,7 +27,7 @@
       <%= f.select :state,
             options_for_select(us_states_options, params.dig(:contact, :state)),
             { include_blank: "Select a state" },
-            class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+            class: "appearance-none w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
     </div>
 
     <div>
@@ -37,7 +37,7 @@
     
     <div>
       <%= f.label :message, "Message", class: "block text-sm font-medium text-gray-700 mb-2" %>
-      <%= f.text_area :message, required: true, rows: 6, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+      <%= f.text_area :message, required: true, rows: 6, class: "w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
     </div>
     
     <%= f.submit "Send Message", class: "w-full bg-[#416970] text-white py-2 px-4 rounded-md hover:bg-[#2d4a52] focus:outline-none focus:ring-2 focus:ring-[#416970] focus:ring-offset-2 transition-colors" %>

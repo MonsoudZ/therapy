@@ -13,17 +13,17 @@
     
   </head>
   <body class="min-h-dvh bg-gray-50 text-zinc-900 antialiased">
-    <div class="mx-auto max-w-5xl px-6">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
       <%= render "shared/nav" %>
     </div>
 
-        <main class="mx-auto max-w-5xl px-6 py-10">
+        <main class="mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-10">
           <%= render "shared/flash_messages" %>
 
           <%= yield %>
         </main>
 
-    <div class="mx-auto max-w-5xl px-6">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
       <%= render "shared/footer" %>
     </div>
   </body>
