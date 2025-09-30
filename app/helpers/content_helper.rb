@@ -24,4 +24,20 @@ module ContentHelper
            primary_button: primary_button,
            secondary_button: secondary_button
   end
+
+  def service_icon_for(service, options = {})
+    sid = service[:id] || service["id"]
+    filename = case sid
+    when "anxiety"          then "anxiety.svg"
+    when "depression"       then "depression.svg"
+    when "relationships"    then "relationships.svg"
+    when "grief"            then "grief.svg"
+    when "health"           then "health.svg"
+    when "military"         then "military.svg"
+    when "trauma-resolution" then "trauma.svg"
+    else
+                 (service[:image] || service["image"]).presence || "placeholder-service.svg"
+    end
+    image_tag filename, { alt: "" }.merge(options)
+  end
 end

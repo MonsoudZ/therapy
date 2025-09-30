@@ -1,7 +1,14 @@
 <div class="rounded-xl border-2 border-gray-200 p-4 sm:p-5 transition-all duration-300 hover:shadow-lg hover:border-[#416970]">
-  <div class="flex items-start gap-4">
+  <div class="flex items-start gap-3">
+    <div class="w-16 shrink-0">
+      <%= service_icon_for(service, class: "w-16 h-16 object-contain") %>
+    </div>
     <div class="flex-1">
-      <%= link_to service_detail_path(service[:id]), data: { turbo_frame: "service-detail-#{service[:id]}", turbo_prefetch: false }, class: "w-full text-left flex items-center justify-between gap-3" do %>
+      <%= link_to service_detail_path(service[:id]),
+                  data: { turbo_frame: "service-detail-#{service[:id]}", turbo_prefetch: false },
+                  class: "w-full text-left flex items-center justify-between gap-3",
+                  id: "service-toggle-#{service[:id]}",
+                  onclick: "const f=document.getElementById('service-detail-#{service[:id]}'); if(f && f.innerHTML.trim()!==''){event.preventDefault(); f.innerHTML='';}" do %>
         <h3 class="text-lg sm:text-xl font-bold text-[#416970]"><%= service[:title] %></h3>
         <span class="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#416970] text-[#416970] text-base leading-none select-none">+</span>
       <% end %>

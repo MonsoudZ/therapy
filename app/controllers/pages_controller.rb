@@ -17,7 +17,8 @@ class PagesController < ApplicationController
     end
 
     if turbo_frame_request?
-      render partial: "service_detail", locals: { service: @service }, layout: false and return
+      # Render the template that wraps the partial in the correct Turbo Frame id
+      render template: "pages/service_detail", layout: false and return
     end
   end
 
