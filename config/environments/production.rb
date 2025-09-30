@@ -51,10 +51,14 @@ Rails.application.configure do
   # Ensure static files are served in production
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RAILS_SERVE_STATIC_ASSETS"].present?
 
-  # Allow Railway domains
+  # --- Host allowlist for Railway & your domain ---
   config.hosts << "web-production-07b1.up.railway.app"
   config.hosts << /.*\.up\.railway\.app/
   config.hosts << /.*\.railway\.app/
+
+  # Your domain (match apex and any subdomain like www)
+  config.hosts << /\A(?:.*\.)?columbinetherapy\.com\z/
+
 
   # (Optional) env-driven, so you don't hardcode
   if ENV["RAILS_ALLOWED_HOSTS"].present?
