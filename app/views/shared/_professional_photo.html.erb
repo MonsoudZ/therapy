@@ -24,23 +24,23 @@
 %>
 
 <div class="relative group <%= additional_classes %>">
-  <!-- Professional photo placeholder -->
-  <div class="<%= size_classes[current_size] %> bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 rounded-3xl flex items-center justify-center shadow-2xl group-hover:shadow-3xl transition-all duration-300 overflow-hidden">
+  <!-- Professional photo -->
+  <div class="<%= size_classes[current_size] %> rounded-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-300 overflow-hidden">
+    <%= image_tag "/professional-photo.jpg", 
+        class: "w-full h-full object-cover", 
+        alt: "Professional photo" %>
     <!-- Subtle pattern overlay -->
     <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-    <div class="relative z-10 text-center text-gray-600">
-      <div class="<%= circle_sizes[current_size] %> mx-auto mb-4 bg-white/80 rounded-full flex items-center justify-center shadow-lg">
-        <svg class="<%= icon_sizes[current_size] %> text-[#416970]" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-        </svg>
+    <% if show_title || show_subtitle %>
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+        <% if show_title %>
+          <p class="text-sm sm:text-lg font-semibold text-white">Professional Photo</p>
+        <% end %>
+        <% if show_subtitle %>
+          <p class="text-xs sm:text-sm text-white/80 mt-1">Clinical Psychologist</p>
+        <% end %>
       </div>
-      <% if show_title %>
-        <p class="text-sm sm:text-lg font-semibold text-[#416970]">Professional Photo</p>
-      <% end %>
-      <% if show_subtitle %>
-        <p class="text-xs sm:text-sm text-gray-500 mt-1">Coming Soon</p>
-      <% end %>
-    </div>
+    <% end %>
   </div>
   
   <!-- Enhanced decorative elements -->

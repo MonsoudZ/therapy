@@ -28,16 +28,22 @@ module ContentHelper
   def service_icon_for(service, options = {})
     sid = service[:id] || service["id"]
     filename = case sid
-    when "anxiety"          then "anxiety.svg"
-    when "depression"       then "depression.svg"
-    when "relationships"    then "relationships.svg"
-    when "grief"            then "grief.svg"
-    when "health"           then "health.svg"
-    when "military"         then "military.svg"
-    when "trauma-resolution" then "trauma.svg"
+    when "anxiety"          then "anxiety.jpg"
+    when "depression"       then "depression.jpg"
+    when "relationships"    then "relationships.jpg"
+    when "grief"            then "grief.jpg"
+    when "health"           then "health.jpg"
+    when "military"         then "military.jpg"
+    when "trauma-resolution" then "trauma.jpg"
     else
                  (service[:image] || service["image"]).presence || "placeholder-service.svg"
     end
-    image_tag filename, { alt: "" }.merge(options)
+
+    # Use public path for all .jpg files, asset path for others
+    if filename.end_with?(".jpg")
+      image_tag "/#{filename}", { alt: "" }.merge(options)
+    else
+      image_tag filename, { alt: "" }.merge(options)
+    end
   end
 end
