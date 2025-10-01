@@ -8,7 +8,7 @@ module ButtonHelper
   end
 
   def secondary_button(text, path, options = {})
-    default_classes = "rounded-xl px-6 sm:px-8 py-3 sm:py-4 text-white font-medium text-base sm:text-lg hover:opacity-90 transition-opacity"
+    default_classes = "rounded-xl px-6 sm:px-8 py-3 sm:py-4 text-white font-medium text-base sm:text-lg hover:opacity-90 transition-opacity border-2 border-[#416970]"
     classes = options[:class] || default_classes
     style = options[:style] || "background-color: #416970;"
 

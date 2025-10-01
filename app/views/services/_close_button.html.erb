@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "service-toggle-#{service[:id]}" do %>
+  <%= link_to detail_close_service_path(service[:id], format: :turbo_stream),
+              data: { turbo_stream: true },
+              class: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#416970] text-white leading-none transition-colors",
+              role: "button",
+              aria: { label: "Close #{service[:title]}" } do %>
+    <span class="text-xl leading-none">−</span>
+  <% end %>
+<% end %>

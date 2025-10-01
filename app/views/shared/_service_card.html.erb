@@ -1,27 +1,34 @@
-<div class="group bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition h-full">
-  <div class="block h-full">
-    <!-- Image -->
-    <div class="rounded-t-xl overflow-hidden">
-      <%= service_icon_for(service,
-                           class: "w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300") %>
-    </div>
+<div class="group bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition h-full flex flex-col">
+  <!-- Image -->
+  <div class="rounded-t-xl overflow-hidden">
+    <%= service_icon_for(service,
+                         class: "w-full aspect-square object-cover transition-transform duration-300") %>
+  </div>
 
-    <!-- Body -->
-    <div class="p-5 flex flex-col h-[160px]">
-      <h3 class="mb-2 text-lg font-semibold text-gray-900 line-clamp-2 min-h-[3rem]">
-        <%= service[:title] %>
-      </h3>
+  <!-- Body -->
+  <div class="p-5 flex flex-col flex-1">
+    <h3 class="mb-2 text-lg font-semibold text-gray-900 line-clamp-2 min-h-[3rem]">
+      <%= service[:title] %>
+    </h3>
 
-      <div class="mt-auto flex items-center justify-between">
+    <p class="mb-3 text-sm text-gray-700 line-clamp-3">
+      <%= service[:teaser] || service[:description] %>
+    </p>
 
-        <%= link_to detail_service_path(service[:id]),
-                    data: { turbo_frame: "service-detail-#{service[:id]}" },
-                    class: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#416970] text-white leading-none hover:bg-[#2d4a3e] transition-colors",
+    <!-- Expandable Description Area -->
+    <%= turbo_frame_tag "service-detail-#{service[:id]}", class: "block" %>
+
+    <div class="mt-auto flex items-center justify-between pt-3">
+
+      <%= turbo_frame_tag "service-toggle-#{service[:id]}" do %>
+        <%= link_to detail_service_path(service[:id], format: :turbo_stream),
+                    data: { turbo_stream: true },
+                    class: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#416970] text-white leading-none transition-colors",
                     role: "button",
                     aria: { label: "Expand #{service[:title]}" } do %>
           <span class="text-xl leading-none">+</span>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
