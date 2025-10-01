@@ -1,55 +1,25 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="accordion"
 export default class extends Controller {
-  static targets = ["content", "icon"]
+  toggle(event) {
+    event.stopPropagation()
+    const card = event.currentTarget.closest("[data-accordion-item]")
+    const content = card.querySelector("[data-accordion-target='content']")
+    const icon = card.querySelector("[data-accordion-target='icon']")
 
-  connect() {
-    this.isOpen = false
-    this.boundExternalOpen = this.handleExternalOpen.bind(this)
-    window.addEventListener("service:open", this.boundExternalOpen)
-    this.update()
-  }
+    // Close all other cards first
+    this.element.querySelectorAll("[data-accordion-item]").forEach(item => {
+      if (item !== card) {
+        const otherContent = item.querySelector("[data-accordion-target='content']")
+        const otherIcon = item.querySelector("[data-accordion-target='icon']")
+        if (otherContent) otherContent.classList.add("hidden")
+        if (otherIcon) otherIcon.textContent = "+"
+      }
+    })
 
-  disconnect() {
-    window.removeEventListener("service:open", this.boundExternalOpen)
-  }
-
-  toggle() {
-    if (this.isOpen) {
-      this.close()
-    } else {
-      this.open()
-    }
-  }
-
-  open() {
-    // Tell others to close
-    window.dispatchEvent(new CustomEvent("service:open", { detail: { source: this.element } }))
-    this.isOpen = true
-    this.update()
-  }
-
-  close() {
-    this.isOpen = false
-    this.update()
-  }
-
-  handleExternalOpen(event) {
-    const { source } = event.detail || {}
-    if (source && source !== this.element && this.isOpen) {
-      this.close()
-    }
-  }
-
-  update() {
-    if (this.hasContentTarget) {
-      this.contentTarget.classList.toggle("hidden", !this.isOpen)
-    }
-    if (this.hasIconTarget) {
-      this.iconTarget.textContent = this.isOpen ? "−" : "+"
-      this.iconTarget.setAttribute("aria-expanded", String(this.isOpen))
-    }
+    // Toggle current card
+    content.classList.toggle("hidden")
+    if (icon) icon.textContent = content.classList.contains("hidden") ? "+" : "–"
   }
 }
 

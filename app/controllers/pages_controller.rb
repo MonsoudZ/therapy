@@ -12,20 +12,18 @@ class PagesController < ApplicationController
 
   def service_detail
     @service = find_service(params[:id])
-    unless @service
-      redirect_to services_path and return
-    end
+    return head :not_found unless @service
 
-    if turbo_frame_request?
-      # Render the template that wraps the partial in the correct Turbo Frame id
-      render template: "pages/service_detail", layout: false and return
-    end
+    frame_id = "service-detail-#{@service[:id]}"
+
+    render inline: view_context.turbo_frame_tag(frame_id) {
+      view_context.render("pages/service_detail", service: @service)
+    }, layout: false
   end
 
-  # Turbo helper to clear a frame
   def service_detail_close
-    @service = { id: params[:id] }
-    render inline: view_context.turbo_frame_tag("service-detail-#{params[:id]}", ""), layout: false
+    id = params[:id]
+    render inline: view_context.turbo_frame_tag("service-detail-#{id}", ""), layout: false
   end
 
   def faqs
@@ -36,21 +34,17 @@ class PagesController < ApplicationController
 
   def load_home_services
     [
-      { title: "Trauma Resolution", description: "Healing from traumatic experiences" },
-      { title: "Anxiety", description: "Managing anxiety and stress" },
-      { title: "Depression", description: "Support for depression and mood" }
+      { title: "Individual Therapy", description: "Personalized support to help you process, heal, and grow." },
+      { title: "Couples Therapy", description: "Strengthen communication, resolve conflict, and rebuild connection." },
+      { title: "Supervision / Consultation", description: "Clinical supervision and consultation for therapists and teams." }
     ]
   end
 
   def load_services
     [
-      { id: "trauma-resolution", title: "Trauma Resolution", description: "Using EMDR and other evidence-based approaches to help you process and heal from traumatic experiences. We'll work together to build resilience and reclaim your sense of safety and control.", image: "mountain.jpg" },
-      { id: "anxiety", title: "Anxiety", description: "Whether it's generalized anxiety, panic attacks, or social anxiety, we'll explore the roots of your worry and develop practical tools to manage symptoms and build confidence.", image: "mountain.jpg" },
-      { id: "depression", title: "Depression", description: "Support for depression and mood disorders through evidence-based approaches that help you regain your sense of hope and well-being.", image: "mountain.jpg" },
-      { id: "relationships", title: "Relationships", description: "Improving communication, resolving conflicts, and building stronger connections with the important people in your life.", image: "mountain.jpg" },
-      { id: "grief", title: "Grief", description: "Navigating loss and grief with compassion and support as you work through the complex emotions that come with significant life changes.", image: "mountain.jpg" },
-      { id: "health", title: "Health", description: "Supporting your mental health journey with a focus on overall wellness and coping strategies for life's challenges.", image: "mountain.jpg" },
-      { id: "military", title: "Military", description: "Specialized support for military personnel and veterans dealing with the unique challenges of service and transition.", image: "mountain.jpg" }
+      { id: "individual-therapy", title: "Individual Therapy", description: "A collaborative, tailored approach to help you clarify patterns, process painful experiences, and move toward a life that feels more grounded, connected, and authentic.", image: "individual.jpg" },
+      { id: "couples-therapy", title: "Couples Therapy", description: "Support for partners to improve communication, repair trust, and deepen intimacy. We'll slow down reactive cycles and build skills for real connection.", image: "couples.jpg" },
+      { id: "supervision-consultation", title: "Supervision / Consultation", description: "Reflective, strengths-based supervision and consultation for clinicians seeking growth, support with complex cases, or refinement of relational/trauma-informed practice.", image: "supervision.jpg" }
     ]
   end
 

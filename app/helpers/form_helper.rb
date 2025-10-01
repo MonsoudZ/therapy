@@ -12,8 +12,8 @@ module FormHelper
   def us_states_options
     [
       %w[Alabama AL], %w[Alaska AK], %w[Arizona AZ], %w[Arkansas AR], %w[California CA],
-      [ "Colorado", "CO" ], [ "Connecticut", "CT" ], [ "Delaware", "DE" ], [ "Florida", "FL" ], [ "Georgia", "GA" ],
-      [ "Hawaii", "HI" ], [ "Idaho", "ID" ], [ "Illinois", "IL" ], [ "Indiana", "IN" ], [ "Iowa", "IA" ],
+      %w[Colorado CO], %w[Connecticut CT], %w[Delaware DE], %w[Florida FL], [ "Georgia", "GA" ],
+      %w[Hawaii HI], [ "Idaho", "ID" ], [ "Illinois", "IL" ], [ "Indiana", "IN" ], [ "Iowa", "IA" ],
       [ "Kansas", "KS" ], [ "Kentucky", "KY" ], [ "Louisiana", "LA" ], [ "Maine", "ME" ], [ "Maryland", "MD" ],
       [ "Massachusetts", "MA" ], [ "Michigan", "MI" ], [ "Minnesota", "MN" ], [ "Mississippi", "MS" ], [ "Missouri", "MO" ],
       [ "Montana", "MT" ], [ "Nebraska", "NE" ], [ "Nevada", "NV" ], [ "New Hampshire", "NH" ], [ "New Jersey", "NJ" ],
@@ -23,9 +23,5 @@ module FormHelper
       [ "Virginia", "VA" ], [ "Washington", "WA" ], [ "West Virginia", "WV" ], [ "Wisconsin", "WI" ], [ "Wyoming", "WY" ],
       [ "Washington DC", "DC" ]
     ]
-  end
-
-  def referral_options
-    [ "Google", "Psychology Today", "Friend/Colleague", "Other" ]
   end
 end

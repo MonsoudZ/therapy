@@ -30,14 +30,25 @@ Rails.application.configure do
 
   # Active Storage removed - no database setup
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Enable email delivery errors in development
+  config.action_mailer.raise_delivery_errors = true
 
   # Make template changes take effect immediately.
   config.action_mailer.perform_caching = false
 
   # Set localhost to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.default_url_options = { host: "localhost", port: 3002 }
+
+  # Configure SMTP for development (using Gmail as example)
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV.fetch("SMTP_ADDRESS", "smtp.gmail.com"),
+    port:                 Integer(ENV.fetch("SMTP_PORT", "587")),
+    user_name:            ENV.fetch("SMTP_USERNAME", "your-email@gmail.com"),
+    password:             ENV.fetch("SMTP_PASSWORD", "your-app-password"),
+    authentication:       :plain,
+    enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

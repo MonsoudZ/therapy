@@ -1,30 +1,37 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Clinical Psychologist | Compassion. Curiosity. Change.</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    
-  </head>
-  <body class="min-h-dvh bg-gray-50 text-zinc-900 antialiased">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6">
-      <%= render "shared/nav" %>
-    </div>
+<html lang="en">
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "Columbine Therapy · Compassion. Curiosity. Change." %></title>
+  <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : 'Therapy for individuals and couples in Colorado. Relational EMDR, psychodynamic, CBT/ACT, and mindfulness.' %>">
 
-        <main class="mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-10">
-          <%= render "shared/flash_messages" %>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#6d9e8d">
 
-          <%= yield %>
-        </main>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <div class="mx-auto max-w-5xl px-4 sm:px-6">
-      <%= render "shared/footer" %>
-    </div>
-  </body>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", type: "module", "data-turbo-track": "reload" %>
+
+  <%= yield :head %>
+</head>
+
+<body class="min-h-dvh text-white antialiased" style="background-color: #6d9e8d;">
+<div class="mx-auto max-w-5xl px-4 sm:px-6">
+  <%= render "shared/nav" %>
+</div>
+
+<main class="mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-10">
+  <%= render "shared/flash_messages" %>
+  <%= yield %>
+</main>
+
+<div class="mx-auto max-w-5xl px-4 sm:px-6">
+  <%= render "shared/footer" %>
+</div>
+</body>
 </html>

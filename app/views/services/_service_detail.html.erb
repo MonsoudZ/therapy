@@ -1,0 +1,19 @@
+<%= turbo_frame_tag "service-detail-#{service[:id]}" do %>
+  <div class="rounded-2xl border border-gray-200 bg-white/90 shadow-md mt-3">
+    <div class="p-4 sm:p-5">
+      <div class="flex items-start gap-3">
+        <p class="text-[15px] text-gray-800 leading-relaxed flex-1">
+          <%= service[:description] %>
+        </p>
+
+        <%= link_to detail_close_service_path(service[:id]),
+                    data: { turbo_frame: "service-detail-#{service[:id]}" },
+                    class: "flex-shrink-0 h-7 w-7 rounded-full border border-gray-300 bg-white/80 hover:bg-white text-gray-700 hover:text-gray-900 transition-colors grid place-items-center text-2xl leading-none",
+                    role: "button",
+                    aria: { label: "Close" } do %>
+          ×
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,13 +1,19 @@
+# config/routes.rb
 Rails.application.routes.draw do
-  get "up" => "rails/health#show"  # healthcheck
-  root "pages#home"
+  get "up" => "rails/health#show"
 
-  get "/about",    to: "pages#about"
-  get "/services", to: "pages#services"
-  get "/services/:id", to: "pages#service_detail", as: :service_detail
-  get "/services/:id/close", to: "pages#service_detail_close", as: :close_service_detail
-  get "/faqs",     to: "pages#faqs"
+  root "home#show"
 
-  get  "/contact", to: "contacts#new"
-  post "/contact", to: "contacts#create"
+  resource  :about,    only: :show
+  resources :faqs,     only: :index
+
+  resources :services, only: :index do
+    member do
+      get :detail
+      get "detail/close", action: :close, as: :detail_close
+    end
+  end
+
+  # ⬇️ Use a symbol for the controller name
+  resource :contact, only: [ :new, :create ], controller: :contacts_form
 end

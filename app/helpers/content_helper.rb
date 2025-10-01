@@ -27,17 +27,16 @@ module ContentHelper
 
   def service_icon_for(service, options = {})
     sid = service[:id] || service["id"]
-    filename = case sid
-    when "anxiety"          then "anxiety.jpg"
-    when "depression"       then "depression.jpg"
-    when "relationships"    then "relationships.jpg"
-    when "grief"            then "grief.jpg"
-    when "health"           then "health.jpg"
-    when "military"         then "military.jpg"
-    when "trauma-resolution" then "trauma.jpg"
-    else
-                 (service[:image] || service["image"]).presence || "placeholder-service.svg"
-    end
+    # Prefer explicit image provided by the service hash; otherwise fall back by ID
+    filename = (service[:image] || service["image"]).presence || (
+      case sid
+      when "individual-therapy"       then "individual.jpg"
+      when "couples-therapy"          then "couples.jpg"
+      when "supervision-consultation" then "supervision.jpg"
+      else
+        "placeholder-service.svg"
+      end
+    )
 
     # Use public path for all .jpg files, asset path for others
     if filename.end_with?(".jpg")
