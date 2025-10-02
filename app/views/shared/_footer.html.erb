@@ -1,21 +1,48 @@
 <footer class="mt-12 sm:mt-16 border-t border-white/20 py-8 sm:py-12">
-  <div class="max-w-4xl">
-
-    <div class="grid gap-6 sm:gap-8 sm:grid-cols-2">
-      <div>
-        <h4 class="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-white">Location</h4>
-        <p class="text-white text-sm sm:text-base">Denver, Colorado</p>
-        <p class="text-white text-sm sm:text-base">Washington, DC</p>
-        <p class="text-white text-sm sm:text-base">Telehealth Available</p>
+  <div class="w-full">
+    <div class="flex flex-col sm:flex-row sm:justify-between gap-8 mb-6">
+      <!-- Quick Links -->
+      <div class="flex-1">
+        <h4 class="text-base sm:text-lg font-semibold mb-3 text-brand-teal">Quick Links</h4>
+        <ul class="space-y-2 text-sm sm:text-base">
+          <li><%= link_to "Services", services_path, class: "text-white/90 hover:text-brand-teal hover:underline underline-offset-4 transition-all" %></li>
+          <li><%= link_to "About", about_path, class: "text-white/90 hover:text-brand-teal hover:underline underline-offset-4 transition-all" %></li>
+          <li><%= link_to "FAQ", faqs_path, class: "text-white/90 hover:text-brand-teal hover:underline underline-offset-4 transition-all" %></li>
+          <li><%= link_to "Contact", new_contact_path, class: "text-white/90 hover:text-brand-teal hover:underline underline-offset-4 transition-all" %></li>
+        </ul>
       </div>
 
-      <div>
-        <h4 class="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-white">Contact Information</h4>
-        <div class="space-y-1.5 sm:space-y-2 text-white text-sm sm:text-base">
-          <p><a href="tel:303-909-2746" class="hover:text-gray-200 transition-colors">303-909-2746</a></p>
-          <p><a href="mailto:akz.licsw@gmail.com" class="hover:text-gray-200 transition-colors">akz.licsw@gmail.com</a></p>
-        </div>
+      <!-- Location -->
+      <div class="flex-1">
+        <h4 class="text-base sm:text-lg font-semibold mb-3 text-brand-teal">Location</h4>
+        <ul class="space-y-2 text-sm sm:text-base text-white/90">
+          <li>Denver, Colorado</li>
+          <li>Washington, DC</li>
+          <li class="text-white font-medium pt-1">Telehealth Available</li>
+        </ul>
       </div>
+
+      <!-- Contact -->
+      <div class="flex-1">
+        <h4 class="text-base sm:text-lg font-semibold mb-3 text-brand-teal">Contact</h4>
+        <ul class="space-y-2 text-sm sm:text-base">
+          <li>
+            <a href="tel:303-909-2746" class="text-white/90 hover:text-brand-teal hover:underline transition-colors">
+              303-909-2746
+            </a>
+          </li>
+          <li>
+            <a href="mailto:akz.licsw@gmail.com" class="text-white/90 hover:text-brand-teal hover:underline transition-colors break-all">
+              akz.licsw@gmail.com
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="pt-6 border-t border-white/10 text-center text-sm text-white/70">
+      <p>&copy; <%= Time.current.year %> Columbine Therapy. All rights reserved.</p>
     </div>
   </div>
 </footer>
