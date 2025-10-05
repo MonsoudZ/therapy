@@ -5,18 +5,6 @@
     "large" => "w-64 h-80 sm:w-80 sm:h-96"
   }
   
-  icon_sizes = {
-    "small" => "w-8 h-8",
-    "medium" => "w-12 h-12",
-    "large" => "w-12 h-12"
-  }
-  
-  circle_sizes = {
-    "small" => "w-12 h-12 sm:w-16 sm:h-16",
-    "medium" => "w-16 h-16 sm:w-20 sm:h-20",
-    "large" => "w-20 h-20 sm:w-24 sm:h-24"
-  }
-  
   current_size = local_assigns[:size] || "medium"
   show_title = local_assigns[:show_title] != false
   show_subtitle = local_assigns[:show_subtitle] != false
@@ -24,17 +12,20 @@
 %>
 
 <div class="relative group <%= additional_classes %>">
-  <!-- Professional photo -->
+  <!-- Home page photo -->
   <div class="<%= size_classes[current_size] %> rounded-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-300 overflow-hidden">
-    <%= image_tag "/professional-photo.jpg",
+    <%= image_tag "/front_page.jpg",
         class: "w-full h-full object-cover", 
-        alt: "Professional photo" %>
+        alt: "Home page photo" %>
     <!-- Subtle pattern overlay -->
     <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
     <% if show_title || show_subtitle %>
       <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+        <% if show_title %>
+          <p class="text-sm sm:text-lg font-semibold text-white">Welcome</p>
+        <% end %>
         <% if show_subtitle %>
-          <p class="text-xs sm:text-sm text-white/80 mt-1">Clinical Psychologist</p>
+          <p class="text-xs sm:text-sm text-white/80 mt-1">Therapy Services</p>
         <% end %>
       </div>
     <% end %>

@@ -1,8 +1,8 @@
 <% @faqs.each do |faq| %>
-  <details class="group rounded-2xl border-2 border-white/30 p-6 hover:border-white/50 transition-colors" style="background-color: #416970;">
-    <summary class="cursor-pointer font-semibold text-lg text-white group-hover:text-gray-200 transition-colors">
+  <details class="group rounded-2xl border-2 border-gray-200 p-6 hover:border-gray-300 transition-colors bg-white">
+    <summary class="cursor-pointer font-semibold text-lg text-black group-hover:text-[#416970] transition-colors">
       <%= faq[:question] %>
     </summary>
-    <p class="mt-4 text-white leading-relaxed"><%= faq[:answer] %></p>
+    <p class="mt-4 text-black leading-relaxed"><%= faq[:answer] %></p>
   </details>
 <% end %>
