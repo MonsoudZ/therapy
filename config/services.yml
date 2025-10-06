@@ -2,16 +2,16 @@ services:
   - id: 1
     title: Individual Therapy
     teaser: Personalized sessions
-    description: One-on-one personalized therapy sessions tailored to your unique needs and goals.
+    description: (50 minute)-$150 sessions with a therapist focused on your individual needs.
     image: individual.jpg
   - id: 2
     title: Couples Therapy
     teaser: Strengthen relationships
-    description: Strengthen your relationship through guided therapy focused on communication and connection.
+    description: (50 minute)-$200 / (90 minute Extended Session)-$275 Strengthen your relationship through guided therapy focused on communication and connection.
     image: couples.jpg
   - id: 3
     title: Supervision / Consultation
     teaser: Professional guidance
-    description: Professional guidance for therapists and counselors seeking to enhance their practice.
+    description: Having had many positive influences from mentors and supervisors over my career, I really value this experience and appreciate the opportunity to collaborate with new therapists as well. Inquire for more details.
     image: supervision.jpg
 
