@@ -15,7 +15,9 @@
     <!-- Name / Email -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <%= f.label :name, "Full name*", class: "block font-medium text-gray-900 mb-1" %>
+        <%= f.label :name, class: "block font-medium text-gray-900 mb-1" do %>
+          Full name<span class="text-red-500">*</span>
+        <% end %>
         <% name_err = contact.errors[:name].present? %>
         <%= f.text_field :name,
                          required: true,
@@ -28,7 +30,9 @@
       </div>
 
       <div>
-        <%= f.label :email, "Email*", class: "block font-medium text-gray-900 mb-1" %>
+        <%= f.label :email, class: "block font-medium text-gray-900 mb-1" do %>
+          Email<span class="text-red-500">*</span>
+        <% end %>
         <% email_err = contact.errors[:email].present? %>
         <%= f.email_field :email,
                           required: true,
@@ -54,7 +58,9 @@
       </div>
 
       <div>
-        <%= f.label :state, "State*", class: "block font-medium text-gray-900 mb-1" %>
+        <%= f.label :state, class: "block font-medium text-gray-900 mb-1" do %>
+          State<span class="text-red-500">*</span>
+        <% end %>
         <% state_err = contact.errors[:state].present? %>
         <%= f.select :state,
                      options_for_select(us_states_options, contact.state),
@@ -71,7 +77,9 @@
 
     <!-- Message -->
     <div>
-      <%= f.label :message, "How can I help?*", class: "block font-medium text-gray-900 mb-1" %>
+      <%= f.label :message, class: "block font-medium text-gray-900 mb-1" do %>
+        How can I help?<span class="text-red-500">*</span>
+      <% end %>
       <% message_err = contact.errors[:message].present? %>
       <%= f.text_area :message,
                       rows: 5,
