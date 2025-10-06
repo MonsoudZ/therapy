@@ -38,11 +38,7 @@ module ContentHelper
       end
     )
 
-    # Use public path for all .jpg files, asset path for others
-    if filename.end_with?(".jpg")
-      image_tag "/#{filename}", { alt: "" }.merge(options)
-    else
-      image_tag filename, { alt: "" }.merge(options)
-    end
+    # Use asset pipeline for all images
+    image_tag filename, { alt: "" }.merge(options)
   end
 end

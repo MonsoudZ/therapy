@@ -14,21 +14,9 @@
 <div class="relative group <%= additional_classes %>">
   <!-- Home page photo -->
   <div class="<%= size_classes[current_size] %> rounded-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-300 overflow-hidden">
-    <%= image_tag "/front_page.jpg",
+    <%= image_tag "front_page.jpg",
         class: "w-full h-full object-cover", 
         alt: "Home page photo" %>
-    <!-- Subtle pattern overlay -->
-    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-    <% if show_title || show_subtitle %>
-      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-        <% if show_title %>
-          <p class="text-sm sm:text-lg font-semibold text-white">Welcome</p>
-        <% end %>
-        <% if show_subtitle %>
-          <p class="text-xs sm:text-sm text-white/80 mt-1">Therapy Services</p>
-        <% end %>
-      </div>
-    <% end %>
   </div>
   
   <!-- Enhanced decorative elements -->
