@@ -22,8 +22,9 @@ class ContactsFormController < ApplicationController
 
       respond_to do |format|
         format.turbo_stream do
-          flash.now[:notice] = "Message sent. Thanks!"
-          render turbo_stream: turbo_stream.replace("flash", partial: "shared/flash_messages")
+          render turbo_stream: [
+            turbo_stream.replace("contact_form", partial: "contacts_form/empty_form")
+          ]
         end
         format.html { redirect_to contact_path, notice: "Message sent. Thanks!" }
       end

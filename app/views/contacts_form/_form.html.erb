@@ -1,0 +1,66 @@
+<% if local_assigns[:notice_message].present? %>
+  <div class="mb-6 rounded-xl border border-[#416970] bg-[#416970] px-4 py-3 text-white">
+    <%= notice_message %>
+  </div>
+<% end %>
+
+<%= form_with model: contact, url: contact_path, method: :post, scope: :contact, data: { turbo: true }, class: "mx-auto w-full max-w-2xl" do |f| %>
+  <!-- Header -->
+  <div class="px-5 py-5 border-b border-gray-100">
+    <h2 class="text-lg font-semibold text-gray-900">Get in touch</h2>
+  </div>
+
+  <!-- Body -->
+  <div class="px-5 py-5 space-y-6">
+    <!-- Name / Email -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <%= f.label :name, "Full name*", class: "block font-medium text-gray-900 mb-1" %>
+        <%= f.text_field :name, required: true,
+                         class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+      </div>
+
+      <div>
+        <%= f.label :email, "Email*", class: "block font-medium text-gray-900 mb-1" %>
+        <%= f.email_field :email, required: true,
+                          class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+      </div>
+    </div>
+
+    <!-- Phone / State -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <%= f.label :phone, "Phone", class: "block font-medium text-gray-900 mb-1" %>
+        <%= f.telephone_field :phone,
+                              inputmode: "numeric",
+                              pattern: "\\d*",
+                              maxlength: 15,
+                              oninput: "this.value=this.value.replace(/\\D/g,'')",
+                              class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+      </div>
+
+      <div>
+        <%= f.label :state, "State*", class: "block font-medium text-gray-900 mb-1" %>
+        <%= f.select :state,
+                     options_for_select(us_states_options),
+                     { include_blank: "Select a state" },
+                     required: true,
+                     class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div>
+      <%= f.label :message, "How can I help?*", class: "block font-medium text-gray-900 mb-1" %>
+      <%= f.text_area :message, rows: 5, required: true, minlength: 10,
+                      class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="px-5 pt-2 pb-5">
+    <%= f.submit "Send",
+                 class: "inline-flex items-center justify-center rounded-xl bg-[#416970] px-6 py-3 text-sm font-medium text-white shadow hover:opacity-90 transition-opacity" %>
+  </div>
+<% end %>
+
