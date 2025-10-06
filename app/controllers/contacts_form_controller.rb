@@ -25,7 +25,7 @@ class ContactsFormController < ApplicationController
         flash.now[:notice] = "Message sent. Thanks!"
         render turbo_stream: turbo_stream.replace("flash", partial: "shared/flash_messages")
       end
-      format.html { redirect_to new_contact_path, notice: "Message sent. Thanks!" }
+      format.html { redirect_to contact_path, notice: "Message sent. Thanks!" }
     end
   rescue ActionController::ParameterMissing
     respond_to do |format|
@@ -33,7 +33,7 @@ class ContactsFormController < ApplicationController
         flash.now[:alert] = "Please fill out all required fields."
         render turbo_stream: turbo_stream.replace("flash", partial: "shared/flash_messages")
       end
-      format.html { redirect_to new_contact_path, alert: "Please fill out all required fields." }
+      format.html { redirect_to contact_path, alert: "Please fill out all required fields." }
     end
   rescue => e
     Rails.logger.error("[ContactForm] #{e.class}: #{e.message}")
@@ -42,7 +42,7 @@ class ContactsFormController < ApplicationController
         flash.now[:alert] = "Something went wrong."
         render turbo_stream: turbo_stream.replace("flash", partial: "shared/flash_messages")
       end
-      format.html { redirect_to new_contact_path, alert: "Something went wrong." }
+      format.html { redirect_to contact_path, alert: "Something went wrong." }
     end
   end
 end

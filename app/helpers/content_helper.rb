@@ -30,8 +30,8 @@ module ContentHelper
     # Prefer explicit image provided by the service hash; otherwise fall back by ID
     filename = (service[:image] || service["image"]).presence || (
       case sid
-      when "individual-therapy"       then "individual.jpg"
-      when "couples-therapy"          then "couples.jpg"
+      when "individual-therapy"       then "couples.jpg"
+      when "couples-therapy"          then "individual.jpg"
       when "supervision-consultation" then "supervision.jpg"
       else
         "placeholder-service.svg"

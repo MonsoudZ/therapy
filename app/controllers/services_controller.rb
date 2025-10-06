@@ -1,3 +1,4 @@
+# app/controllers/services_controller.rb
 class ServicesController < ApplicationController
   def index
     @services = load_services
@@ -7,55 +8,55 @@ class ServicesController < ApplicationController
     @service = find_service(params[:id])
     return head :not_found unless @service
 
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: [
-          turbo_stream.replace(
-            "service-toggle-#{@service[:id]}",
-            partial: "services/close_button",
-            locals: { service: @service }
-          ),
-          turbo_stream.update(
-            "service-detail-#{@service[:id]}",
-            partial: "services/service_description",
-            locals: { service: @service }
-          )
-        ]
-      end
-    end
+    key = dom_key(@service)
+
+    render turbo_stream: [
+      turbo_stream.replace(
+        "service-toggle-#{key}",
+        partial: "services/close_button",
+        locals: { service: @service }
+      ),
+      turbo_stream.replace(
+        "service-detail-#{key}",
+        partial: "services/service_description",
+        locals: { service: @service }
+      )
+    ]
   end
 
-  def close
-    service = find_service(params[:id])
+  def detail_close
+    @service = find_service(params[:id])
+    return head :not_found unless @service
 
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: [
-          turbo_stream.replace(
-            "service-toggle-#{params[:id]}",
-            partial: "services/open_button",
-            locals: { service: service }
-          ),
-          turbo_stream.update(
-            "service-detail-#{params[:id]}",
-            ""
-          )
-        ]
-      end
-    end
+    key = dom_key(@service)
+
+    render turbo_stream: [
+      turbo_stream.replace(
+        "service-toggle-#{key}",
+        partial: "services/open_button",
+        locals: { service: @service }
+      ),
+      # clear the detail frame
+      turbo_stream.update("service-detail-#{key}", "")
+    ]
   end
 
   private
 
+  def dom_key(service)
+    "#{service[:id]}-#{service[:title].parameterize}"
+  end
+
+  # stub data; replace with real source
   def load_services
     [
-      { id: "individual-therapy", title: "Individual Therapy", description: "One-on-one personalized therapy sessions tailored to your unique needs and goals.", teaser: "Personalized sessions", image: "individual.jpg" },
-      { id: "couples-therapy", title: "Couples Therapy", description: "Strengthen your relationship through guided therapy focused on communication and connection.", teaser: "Strengthen relationships", image: "couples.jpg" },
-      { id: "supervision-consultation", title: "Supervision / Consultation", description: "Professional guidance for therapists and counselors seeking to enhance their practice.", teaser: "Professional guidance", image: "supervision.jpg" }
+      { id: 1, title: "Individual Therapy", description: "One-on-one personalized therapy sessions tailored to your unique needs and goals.", teaser: "Personalized sessions", image: "individual.jpg" },
+      { id: 2, title: "Couples Therapy", description: "Strengthen your relationship through guided therapy focused on communication and connection.", teaser: "Strengthen relationships", image: "couples.jpg" },
+      { id: 3, title: "Supervision / Consultation", description: "Professional guidance for therapists and counselors seeking to enhance their practice.", teaser: "Professional guidance", image: "supervision.jpg" }
     ]
   end
 
   def find_service(id)
-    load_services.find { |s| s[:id] == id }
+    load_services.find { |s| s[:id].to_s == id.to_s }
   end
 end

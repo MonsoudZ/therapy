@@ -1,6 +1,5 @@
 module ApplicationHelper
   include ButtonHelper
-  include TypographyHelper
   include ContentHelper
 
   def page_title(title = nil)

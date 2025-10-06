@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   resources :services, only: :index do
     member do
       get :detail
-      get "detail/close", action: :close, as: :detail_close
+      get "detail/close", action: :detail_close, as: :detail_close
     end
   end
 
-  # ⬇️ Use a symbol for the controller name
-  resource :contact, only: [ :new, :create ], controller: :contacts_form
+  # Contact routes
+  get "/contact", to: "contacts_form#new"
+  post "/contact", to: "contacts_form#create"
 end

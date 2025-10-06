@@ -42,8 +42,8 @@ class PagesController < ApplicationController
 
   def load_services
     [
-      { id: "individual-therapy", title: "Individual Therapy", description: "A collaborative, tailored approach to help you clarify patterns, process painful experiences, and move toward a life that feels more grounded, connected, and authentic.", image: "individual.jpg" },
-      { id: "couples-therapy", title: "Couples Therapy", description: "Support for partners to improve communication, repair trust, and deepen intimacy. We'll slow down reactive cycles and build skills for real connection.", image: "couples.jpg" },
+      { id: "individual-therapy", title: "Individual Therapy", description: "A collaborative, tailored approach to help you clarify patterns, process painful experiences, and move toward a life that feels more grounded, connected, and authentic.", image: "couples.jpg" },
+      { id: "couples-therapy", title: "Couples Therapy", description: "Support for partners to improve communication, repair trust, and deepen intimacy. We'll slow down reactive cycles and build skills for real connection.", image: "individual.jpg" },
       { id: "supervision-consultation", title: "Supervision / Consultation", description: "Reflective, strengths-based supervision and consultation for clinicians seeking growth, support with complex cases, or refinement of relational/trauma-informed practice.", image: "supervision.jpg" }
     ]
   end

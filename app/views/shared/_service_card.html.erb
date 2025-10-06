@@ -1,8 +1,11 @@
+<!-- app/views/shared/_service_card.html.erb -->
 <div class="group bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition h-full flex flex-col">
   <!-- Image -->
   <div class="rounded-t-xl overflow-hidden">
-    <%= service_icon_for(service,
-                         class: "w-full aspect-square object-cover transition-transform duration-300") %>
+    <%= service_icon_for(
+          service,
+          class: "w-full aspect-square object-cover transition-transform duration-300"
+        ) %>
   </div>
 
   <!-- Body -->
@@ -15,14 +18,14 @@
       <%= service[:teaser] || service[:description] %>
     </p>
 
-    <!-- Expandable Description Area -->
-    <%= turbo_frame_tag "service-detail-#{service[:id]}", class: "block" %>
+    <!-- Expandable Description Area (filled by Turbo) -->
+    <%= turbo_frame_tag "service-detail-#{service[:id]}-#{service[:title].parameterize}", class: "block min-h-0" %>
 
+    <!-- Footer / Toggle Button -->
     <div class="mt-auto flex items-center justify-between pt-3">
-
-      <%= turbo_frame_tag "service-toggle-#{service[:id]}" do %>
-        <%= link_to detail_service_path(service[:id], format: :turbo_stream),
-                    data: { turbo_stream: true },
+      <%= turbo_frame_tag "service-toggle-#{service[:id]}-#{service[:title].parameterize}" do %>
+        <%= link_to detail_service_path(service[:id]),
+                    data: { turbo_frame: "service-detail-#{service[:id]}-#{service[:title].parameterize}" },
                     class: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#416970] text-white leading-none transition-colors",
                     role: "button",
                     aria: { label: "Expand #{service[:title]}" } do %>
