@@ -1,0 +1,36 @@
+<!-- License logos section -->
+<section class="py-8 sm:py-12 border-t border-gray-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="text-center mb-6">
+      <h3 class="text-lg font-semibold text-black mb-4">Professional Affiliations</h3>
+    </div>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12">
+      <!-- Psychology Today Logo -->
+      <div class="flex items-center justify-center">
+        <%= link_to "https://www.psychologytoday.com", 
+                    target: "_blank", 
+                    rel: "noopener noreferrer",
+                    class: "group transition-opacity hover:opacity-80" do %>
+          <%= image_tag "Psychology-Today.jpg", 
+              class: "h-16 w-auto object-contain", 
+              alt: "Psychology Today Verified" %>
+        <% end %>
+      </div>
+
+      <!-- Sexual Health Alliance Logo -->
+      <div class="flex items-center justify-center">
+        <%= link_to "https://sexualhealthalliance.com", 
+                    target: "_blank", 
+                    rel: "noopener noreferrer",
+                    class: "group transition-opacity hover:opacity-80" do %>
+          <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+            <%= image_tag "SHA.jpg", 
+                class: "h-16 w-auto object-contain", 
+                alt: "Sexual Health Alliance" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
