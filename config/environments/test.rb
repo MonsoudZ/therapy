@@ -6,6 +6,14 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Route exceptions through the app so request specs can assert error statuses/pages
+  config.consider_all_requests_local = false
+  config.action_dispatch.show_exceptions = true
+  config.exceptions_app = routes
+
+  # Ensure Rails' debug exceptions page doesn't intercept errors in tests
+  config.middleware.delete ActionDispatch::DebugExceptions
+
   # While tests run files are not watched, reloading is not necessary.
   config.enable_reloading = false
 

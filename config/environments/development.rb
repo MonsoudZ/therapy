@@ -1,6 +1,9 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # Deliver emails to browser in development
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Make code changes take effect immediately without server restart.
@@ -37,18 +40,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Set localhost to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "localhost", port: 3002 }
-
-  # Configure SMTP for development (using Gmail as example)
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              ENV.fetch("SMTP_ADDRESS", "smtp.gmail.com"),
-    port:                 Integer(ENV.fetch("SMTP_PORT", "587")),
-    user_name:            ENV.fetch("SMTP_USERNAME", "your-email@gmail.com"),
-    password:             ENV.fetch("SMTP_PASSWORD", "your-app-password"),
-    authentication:       :plain,
-    enable_starttls_auto: true
-  }
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
