@@ -1,0 +1,40 @@
+<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background:#f7f7f7;padding:24px 0;">
+  <tr>
+    <td align="center">
+      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width:600px;background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;">
+        <tr>
+          <td style="padding:24px 24px 0 24px;background:#416970;color:#ffffff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border-bottom:1px solid rgba(255,255,255,0.2);">
+            <h1 style="margin:0;font-size:20px;line-height:1.4;">New website inquiry</h1>
+            <p style="margin:4px 0 0 0;font-size:14px;opacity:0.9;">Columbine Therapy</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:20px 24px 8px 24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#111827;">
+            <p style="margin:0 0 12px 0;">You received a new inquiry from your website contact form.</p>
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="border-collapse:separate;border-spacing:0 8px;">
+              <tr>
+                <td style="width:140px;color:#6b7280;font-size:14px;">Name</td>
+                <td style="font-size:14px;color:#111827;"><strong><%= @name %></strong></td>
+              </tr>
+              <tr>
+                <td style="width:140px;color:#6b7280;font-size:14px;">Email</td>
+                <td style="font-size:14px;color:#111827;"><a href="mailto:<%= @email %>" style="color:#416970;text-decoration:underline;"><%= @email %></a></td>
+              </tr>
+            </table>
+            <div style="margin:16px 0;padding:12px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;">
+              <div style="color:#6b7280;font-size:12px;margin-bottom:6px;">Message</div>
+              <div style="white-space:pre-wrap;color:#111827;font-size:14px;line-height:1.6;"><%= @message %></div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 24px 24px 24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#6b7280;font-size:12px;">
+            <p style="margin:0;">Reply directly to this email to contact the sender.</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+

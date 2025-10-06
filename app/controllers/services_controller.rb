@@ -50,11 +50,12 @@ class ServicesController < ApplicationController
   end
 
   def load_services
-    [
-      { id: 1, title: "Individual Therapy", description: "One-on-one personalized therapy sessions tailored to your unique needs and goals.", teaser: "Personalized sessions", image: "individual.jpg" },
-      { id: 2, title: "Couples Therapy", description: "Strengthen your relationship through guided therapy focused on communication and connection.", teaser: "Strengthen relationships", image: "couples.jpg" },
-      { id: 3, title: "Supervision / Consultation", description: "Professional guidance for therapists and counselors seeking to enhance their practice.", teaser: "Professional guidance", image: "supervision.jpg" }
-    ]
+    @loaded_services ||= begin
+      raw = YAML.load_file(Rails.root.join("config/services.yml"))
+      (raw["services"] || []).map do |s|
+        s.symbolize_keys
+      end
+    end
   end
 
   def find_service(id)

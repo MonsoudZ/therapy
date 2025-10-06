@@ -1,5 +1,6 @@
 # app/controllers/contacts_form_controller.rb
 class ContactsFormController < ApplicationController
+  before_action :throttle_contact_submissions!, only: :create
   def new
     @contact = ContactForm.new
   end
@@ -63,5 +64,47 @@ class ContactsFormController < ApplicationController
 
   def contact_params
     params.require(:contact).permit(:name, :email, :message, :phone, :state, :referral_source)
+  end
+
+  # Basic, in-process rate limiting by IP. Allows 1 submission every 15 seconds
+  # and at most 5 submissions per hour per IP. Uses Rails.cache; suitable for
+  # low-volume forms without external dependencies.
+  def throttle_contact_submissions!
+    ip = request.remote_ip.presence || "unknown"
+    now = Time.current.to_i
+
+    last_key = "contact:last:#{ip}"
+    hour_key = "contact:hour:#{ip}:#{Time.current.strftime('%Y%m%d%H')}"
+
+    last_ts = Rails.cache.read(last_key).to_i
+    count = (Rails.cache.read(hour_key) || 0).to_i
+
+    min_interval = 15 # seconds between submissions
+    hourly_limit = 5   # max submissions per hour
+
+    if last_ts.positive? && (now - last_ts) < min_interval
+      return render_throttled(min_interval - (now - last_ts))
+    end
+
+    if count >= hourly_limit
+      return render_throttled(3600)
+    end
+
+    # Record this attempt (even if later validation fails) to prevent abuse
+    Rails.cache.write(last_key, now, expires_in: 1.hour)
+    Rails.cache.write(hour_key, count + 1, expires_in: 1.hour)
+  end
+
+  def render_throttled(retry_after)
+    response.set_header("Retry-After", retry_after.to_i)
+    respond_to do |format|
+      format.turbo_stream do
+        flash.now[:alert] = "Please wait before submitting again. Try in #{retry_after.to_i} seconds."
+        render turbo_stream: turbo_stream.replace("flash", partial: "shared/flash_messages"), status: :too_many_requests
+      end
+      format.html do
+        redirect_to contact_path, alert: "Please wait before submitting again."
+      end
+    end
   end
 end

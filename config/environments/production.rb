@@ -30,9 +30,10 @@ Rails.application.configure do
   config.assume_ssl = true
   config.force_ssl  = true
 
-  # Let HTTP healthcheck hit /up without redirect loop
+  # Let HTTP healthcheck hit /up without redirect loop and enable HSTS
   config.ssl_options = {
-    redirect: { exclude: ->(req) { req.path == "/up" } }
+    redirect: { exclude: ->(req) { req.path == "/up" } },
+    hsts: { expires: 1.year, subdomains: true, preload: true }
   }
 
   # --- Logging ---
@@ -41,6 +42,14 @@ Rails.application.configure do
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
   config.silence_healthcheck_path = "/up"
   config.active_support.report_deprecations = false
+
+  # --- Security Headers ---
+  config.action_dispatch.default_headers.merge!({
+    "Referrer-Policy" => "strict-origin-when-cross-origin",
+    "X-Content-Type-Options" => "nosniff",
+    "X-Frame-Options" => "SAMEORIGIN",
+    "Permissions-Policy" => "geolocation=(), microphone=(), camera=()"
+  })
 
   # --- Hosts / DNS Rebinding ---
   # Railway service host(s)

@@ -39,6 +39,11 @@ module ContentHelper
     )
 
     # Use asset pipeline for all images
-    image_tag filename, { alt: "" }.merge(options)
+    # If a descriptive title exists, use it for alt; otherwise mark decorative
+    alt_text = service[:title].present? ? service[:title] : ""
+    # Provide intrinsic dimensions to reduce layout shift where possible
+    default_dims = { width: 800, height: 800 }
+    dims = default_dims.merge(options.slice(:width, :height))
+    image_tag filename, { alt: alt_text, loading: "lazy" }.merge(dims).merge(options.except(:width, :height))
   end
 end

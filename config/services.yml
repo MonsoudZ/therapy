@@ -1,0 +1,17 @@
+services:
+  - id: 1
+    title: Individual Therapy
+    teaser: Personalized sessions
+    description: One-on-one personalized therapy sessions tailored to your unique needs and goals.
+    image: individual.jpg
+  - id: 2
+    title: Couples Therapy
+    teaser: Strengthen relationships
+    description: Strengthen your relationship through guided therapy focused on communication and connection.
+    image: couples.jpg
+  - id: 3
+    title: Supervision / Consultation
+    teaser: Professional guidance
+    description: Professional guidance for therapists and counselors seeking to enhance their practice.
+    image: supervision.jpg
+

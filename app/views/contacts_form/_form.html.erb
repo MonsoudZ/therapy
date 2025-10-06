@@ -16,14 +16,28 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <%= f.label :name, "Full name*", class: "block font-medium text-gray-900 mb-1" %>
-        <%= f.text_field :name, required: true,
-                         class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+        <% name_err = contact.errors[:name].present? %>
+        <%= f.text_field :name,
+                         required: true,
+                         'aria-invalid': name_err,
+                         'aria-describedby': (name_err ? 'contact-name-error' : nil),
+                         class: "block w-full rounded-md border #{name_err ? 'border-red-400' : 'border-gray-300'} bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 #{name_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
+        <% if name_err %>
+          <p id="contact-name-error" class="mt-1 text-sm text-red-600"><%= contact.errors[:name].first %></p>
+        <% end %>
       </div>
 
       <div>
         <%= f.label :email, "Email*", class: "block font-medium text-gray-900 mb-1" %>
-        <%= f.email_field :email, required: true,
-                          class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+        <% email_err = contact.errors[:email].present? %>
+        <%= f.email_field :email,
+                          required: true,
+                          'aria-invalid': email_err,
+                          'aria-describedby': (email_err ? 'contact-email-error' : nil),
+                          class: "block w-full rounded-md border #{email_err ? 'border-red-400' : 'border-gray-300'} bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 #{email_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
+        <% if email_err %>
+          <p id="contact-email-error" class="mt-1 text-sm text-red-600"><%= contact.errors[:email].first %></p>
+        <% end %>
       </div>
     </div>
 
@@ -41,19 +55,34 @@
 
       <div>
         <%= f.label :state, "State*", class: "block font-medium text-gray-900 mb-1" %>
+        <% state_err = contact.errors[:state].present? %>
         <%= f.select :state,
-                     options_for_select(us_states_options),
+                     options_for_select(us_states_options, contact.state),
                      { include_blank: "Select a state" },
                      required: true,
-                     class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+                     'aria-invalid': state_err,
+                     'aria-describedby': (state_err ? 'contact-state-error' : nil),
+                     class: "block w-full rounded-md border #{state_err ? 'border-red-400' : 'border-gray-300'} bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:outline-none focus:ring-2 #{state_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
+        <% if state_err %>
+          <p id="contact-state-error" class="mt-1 text-sm text-red-600"><%= contact.errors[:state].first %></p>
+        <% end %>
       </div>
     </div>
 
     <!-- Message -->
     <div>
       <%= f.label :message, "How can I help?*", class: "block font-medium text-gray-900 mb-1" %>
-      <%= f.text_area :message, rows: 5, required: true, minlength: 10,
-                      class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+      <% message_err = contact.errors[:message].present? %>
+      <%= f.text_area :message,
+                      rows: 5,
+                      required: true,
+                      minlength: 10,
+                      'aria-invalid': message_err,
+                      'aria-describedby': (message_err ? 'contact-message-error' : nil),
+                      class: "block w-full rounded-md border #{message_err ? 'border-red-400' : 'border-gray-300'} bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 #{message_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
+      <% if message_err %>
+        <p id="contact-message-error" class="mt-1 text-sm text-red-600"><%= contact.errors[:message].first %></p>
+      <% end %>
     </div>
   </div>
 

@@ -1,36 +1,36 @@
-<header class="flex items-center justify-between py-3 sm:py-6 border-b border-gray-200">
+<header class="flex items-center justify-between py-3 sm:py-6 border-b border-gray-200" role="navigation" aria-label="Primary">
   <%= link_to "Columbine Therapy", root_path, class: "text-xl sm:text-2xl font-bold text-black" %>
 
   <!-- Mobile menu button -->
-  <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()">
+  <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
     </svg>
   </button>
 
   <!-- Desktop navigation -->
-  <nav class="hidden gap-6 lg:gap-8 sm:flex">
-    <%= link_to "About", about_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all" %>
-    <%= link_to "Services", services_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all" %>
-    <%= link_to "FAQs", faqs_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all" %>
-    <%= link_to "Contact", contact_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all" %>
+  <nav class="hidden gap-8 lg:gap-10 sm:flex">
+    <%= link_to "About", about_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+    <%= link_to "Services", services_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+    <%= link_to "FAQs", faqs_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+    <%= link_to "Contact", contact_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
   </nav>
 
   <!-- Desktop CTA button -->
-  <div class="hidden sm:block ml-4">
-    <%= link_to "Book a Free Consultation", contact_path, class: "rounded-xl px-4 lg:px-6 py-2 lg:py-3 text-white font-medium hover:opacity-90 transition-opacity text-xs md:text-sm lg:text-base", style: "background-color: #416970;" %>
+  <div class="hidden sm:block ml-6">
+    <%= link_to "Book a Free Consultation", contact_path, class: "rounded-xl px-4 lg:px-6 py-2 lg:py-3 text-white font-medium hover:opacity-90 transition-opacity text-xs md:text-sm lg:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#416970]", style: "background-color: #416970;" %>
   </div>
 </header>
 
 <!-- Mobile navigation menu -->
 <div id="mobile-menu" class="hidden sm:hidden bg-gray-50 border-t border-gray-200">
-  <nav class="flex flex-col space-y-4 p-6">
-    <%= link_to "About", about_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-2" %>
-    <%= link_to "Services", services_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-2" %>
-    <%= link_to "FAQs", faqs_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-2" %>
-    <%= link_to "Contact", contact_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-2" %>
-    <div class="pt-4 border-t">
-      <%= link_to "Book a Free Consultation", contact_path, class: "block w-full text-center rounded-xl px-6 py-3 text-white font-medium hover:opacity-90 transition-opacity", style: "background-color: #416970;" %>
+  <nav class="flex flex-col space-y-2 p-6">
+    <%= link_to "About", about_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-3 px-2 rounded-lg hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" %>
+    <%= link_to "Services", services_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-3 px-2 rounded-lg hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" %>
+    <%= link_to "FAQs", faqs_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-3 px-2 rounded-lg hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" %>
+    <%= link_to "Contact", contact_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-3 px-2 rounded-lg hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" %>
+    <div class="pt-4 border-t border-gray-300">
+      <%= link_to "Book a Free Consultation", contact_path, class: "block w-full text-center rounded-xl px-6 py-3 text-white font-medium hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#416970]", style: "background-color: #416970;" %>
     </div>
   </nav>
 </div>
@@ -38,6 +38,10 @@
 <script>
     function toggleMobileMenu() {
         const menu = document.getElementById('mobile-menu');
+        const button = document.querySelector('[aria-controls="mobile-menu"]');
+        const isHidden = menu.classList.contains('hidden');
+        
         menu.classList.toggle('hidden');
+        button.setAttribute('aria-expanded', !isHidden);
     }
 </script>
