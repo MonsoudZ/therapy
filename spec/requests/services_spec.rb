@@ -13,8 +13,8 @@ RSpec.describe "Services", type: :request do
       get detail_service_path(1), headers: { 'ACCEPT' => 'text/vnd.turbo-stream.html' }
       expect(response.media_type).to eq('text/vnd.turbo-stream.html')
       expect(response).to have_http_status(:ok)
-      expect(response.body).to include('turbo-stream action="replace" target="service-toggle-1-individual-therapy"')
-      expect(response.body).to include('turbo-stream action="replace" target="service-detail-1-individual-therapy"')
+      expect(response.body).to include('turbo-stream action="update" target="service-toggle-1-individual-therapy"')
+      expect(response.body).to include('turbo-stream action="update" target="service-detail-1-individual-therapy"')
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe "Services", type: :request do
       get detail_close_service_path(1), headers: { 'ACCEPT' => 'text/vnd.turbo-stream.html' }
       expect(response.media_type).to eq('text/vnd.turbo-stream.html')
       expect(response).to have_http_status(:ok)
-      expect(response.body).to include('turbo-stream action="replace" target="service-toggle-1-individual-therapy"')
+      expect(response.body).to include('turbo-stream action="update" target="service-toggle-1-individual-therapy"')
       expect(response.body).to include('turbo-stream action="update" target="service-detail-1-individual-therapy"')
     end
   end

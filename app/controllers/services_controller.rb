@@ -1,4 +1,3 @@
-# app/controllers/services_controller.rb
 class ServicesController < ApplicationController
   def index
     @services = load_services
@@ -10,13 +9,15 @@ class ServicesController < ApplicationController
 
     key = dom_key(@service)
 
+    request.format = :turbo_stream
+
     render turbo_stream: [
-      turbo_stream.replace(
+      turbo_stream.update(
         "service-toggle-#{key}",
         partial: "services/close_button",
         locals: { service: @service }
       ),
-      turbo_stream.replace(
+      turbo_stream.update(
         "service-detail-#{key}",
         partial: "services/service_description",
         locals: { service: @service }
@@ -30,13 +31,14 @@ class ServicesController < ApplicationController
 
     key = dom_key(@service)
 
+    request.format = :turbo_stream
+
     render turbo_stream: [
-      turbo_stream.replace(
+      turbo_stream.update(
         "service-toggle-#{key}",
         partial: "services/open_button",
         locals: { service: @service }
       ),
-      # clear the detail frame
       turbo_stream.update("service-detail-#{key}", "")
     ]
   end
@@ -47,7 +49,6 @@ class ServicesController < ApplicationController
     "#{service[:id]}-#{service[:title].parameterize}"
   end
 
-  # stub data; replace with real source
   def load_services
     [
       { id: 1, title: "Individual Therapy", description: "One-on-one personalized therapy sessions tailored to your unique needs and goals.", teaser: "Personalized sessions", image: "individual.jpg" },

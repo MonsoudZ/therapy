@@ -1,9 +1,8 @@
-<%= turbo_frame_tag "service-toggle-#{service[:id]}-#{service[:title].parameterize}" do %>
-  <%= link_to detail_close_service_path(service[:id]),
-              data: { turbo_stream: true, turbo_method: :get },
-              class: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#416970] text-white leading-none transition-colors",
-              role: "button",
-              aria: { label: "Close #{service[:title]}" } do %>
-    <span class="text-xl leading-none">−</span>
-  <% end %>
+<!-- app/views/services/_close_button.html.erb -->
+<%= link_to detail_close_service_path(service[:id]),
+            data: { turbo_stream: true },
+            class: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#416970] text-white leading-none transition-colors",
+            role: "button",
+            aria: { label: "Close #{service[:title]}" } do %>
+  <span class="text-xl leading-none">−</span>
 <% end %>

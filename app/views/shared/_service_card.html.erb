@@ -18,14 +18,15 @@
       <%= service[:teaser] || service[:description] %>
     </p>
 
-    <!-- Expandable Description Area (filled by Turbo) -->
-    <%= turbo_frame_tag "service-detail-#{service[:id]}-#{service[:title].parameterize}", class: "block min-h-0" %>
+    <!-- Expandable Description Area (filled by Turbo Streams) -->
+    <%= turbo_frame_tag "service-detail-#{service[:id]}-#{service[:title].parameterize}", class: "block" do %>
+    <% end %>
 
     <!-- Footer / Toggle Button -->
     <div class="mt-auto flex items-center justify-between pt-3">
       <%= turbo_frame_tag "service-toggle-#{service[:id]}-#{service[:title].parameterize}" do %>
         <%= link_to detail_service_path(service[:id]),
-                    data: { turbo_frame: "service-detail-#{service[:id]}-#{service[:title].parameterize}" },
+                    data: { turbo_stream: true },
                     class: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#416970] text-white leading-none transition-colors",
                     role: "button",
                     aria: { label: "Expand #{service[:title]}" } do %>
