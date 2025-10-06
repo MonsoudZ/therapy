@@ -25,5 +25,3 @@ class ContactForm
     }
   end
 end
-
-
