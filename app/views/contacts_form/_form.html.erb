@@ -16,7 +16,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <%= f.label :name, class: "block font-medium text-gray-900 mb-1" do %>
-          Full name<span class="text-red-500">*</span>
+          Full Name<span class="text-red-500">*</span>
         <% end %>
         <% name_err = contact.errors[:name].present? %>
         <%= f.text_field :name,

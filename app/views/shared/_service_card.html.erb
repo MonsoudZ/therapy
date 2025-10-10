@@ -14,10 +14,6 @@
       <%= service[:title] %>
     </h3>
 
-    <p class="mb-3 text-sm text-gray-700 line-clamp-3">
-      <%= service[:teaser] || service[:description] %>
-    </p>
-
     <!-- Expandable Description Area (filled by Turbo Streams) -->
     <%= turbo_frame_tag "service-detail-#{service[:id]}-#{service[:title].parameterize}", class: "block" do %>
     <% end %>

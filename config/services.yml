@@ -1,17 +1,24 @@
 services:
   - id: 1
     title: Individual Therapy
-    teaser: Personalized sessions
-    description: (50 minute)-$150 sessions with a therapist focused on your individual needs.
+    description: |
+      Individual Session: (50 min)-$150
+      
+      Intake: (60 min)-$175
     image: individual.jpg
   - id: 2
     title: Couples Therapy
-    teaser: Strengthen relationships
-    description: (50 minute)-$200 / (90 minute Extended Session)-$275 Strengthen your relationship through guided therapy focused on communication and connection.
+    description: |
+      Couples Session: (50 minute)-$200
+      
+      Intake: (60 min)-$225
+      
+      Extended Session: (90 minute)-$275
     image: couples.jpg
   - id: 3
-    title: Supervision / Consultation
-    teaser: Professional guidance
-    description: Having had many positive influences from mentors and supervisors over my career, I really value this experience and appreciate the opportunity to collaborate with new therapists as well. Inquire for more details.
+    title: Supervision
+    description: |
+      Throughout my career, I've been fortunate to learn from incredible mentors and supervisors who deeply shaped my growth as a therapist. Because of this, I truly value the opportunity to support and collaborate with emerging clinicians.
+      
+      If you're a new therapist looking for guidance, connection, or consultation, I'd love to connect — feel free to reach out for more details.
     image: supervision.jpg
-
