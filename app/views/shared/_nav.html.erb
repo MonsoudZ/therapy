@@ -1,5 +1,8 @@
 <header class="flex items-center justify-between py-3 sm:py-6 border-b border-gray-200" role="navigation" aria-label="Primary">
-  <%= link_to "Columbine Therapy", root_path, class: "text-xl sm:text-2xl font-bold text-black" %>
+  <%= link_to root_path, class: "flex items-center gap-2 text-xl sm:text-2xl font-bold text-black hover:text-[#416970] transition-colors" do %>
+    <%= image_tag "columbine-logo.svg", alt: "Columbine Therapy", class: "w-8 h-8" %>
+    <span>Columbine Therapy</span>
+  <% end %>
 
   <!-- Mobile menu button -->
   <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
