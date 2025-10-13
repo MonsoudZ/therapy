@@ -3,17 +3,14 @@ services:
     title: Individual Therapy
     description: |
       Individual Session: (50 min)-$150
-      
       Intake: (60 min)-$175
     image: individual.jpg
   - id: 2
     title: Couples Therapy
     description: |
-      Couples Session: (50 minute)-$200
-      
-      Intake: (60 min)-$225
-      
-      Extended Session: (90 minute)-$275
+      Couples Session: (50 min)-$175
+      Intake: (60 min)-$200
+      Extended Session: (90 min)-$250
     image: couples.jpg
   - id: 3
     title: Supervision

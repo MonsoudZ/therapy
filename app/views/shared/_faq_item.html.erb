@@ -8,6 +8,6 @@
         <%= faq[:question] %>
       </h2>
     </summary>
-    <p class="mt-4 text-black leading-relaxed"><%= faq[:answer] %></p>
+    <div class="mt-4 text-black leading-relaxed [&_a]:text-[#416970] [&_a]:hover:text-[#2d4a52] [&_a]:underline [&_a]:decoration-[#416970] [&_a]:hover:decoration-[#2d4a52] [&_a]:transition-colors [&_p]:mb-4 [&_p:last-child]:mb-0"><%= sanitize(faq[:answer], tags: %w[a p br strong em], attributes: %w[href target rel]) %></div>
   </details>
 <% end %>
