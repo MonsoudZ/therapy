@@ -6,7 +6,7 @@
 
 <%= form_with model: contact, url: contact_path, method: :post, scope: :contact, data: { turbo: true }, class: "mx-auto w-full max-w-2xl" do |f| %>
   <!-- Header -->
-  <div class="px-5 py-5 border-b border-gray-100">
+  <div class="px-5 py-5 border-b border-[#9CAF88]">
     <h2 class="text-lg font-semibold text-gray-900">Get in touch</h2>
   </div>
 
@@ -23,7 +23,7 @@
                          required: true,
                          'aria-invalid': name_err,
                          'aria-describedby': (name_err ? 'contact-name-error' : nil),
-                         class: "block w-full rounded-md border #{name_err ? 'border-red-400' : 'border-gray-300'} bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 #{name_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
+                         class: "block w-full rounded-md border #{name_err ? 'border-red-400' : 'border-[#9CAF88]'} bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 #{name_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
         <% if name_err %>
           <p id="contact-name-error" class="mt-1 text-sm text-red-600"><%= contact.errors[:name].first %></p>
         <% end %>
@@ -38,7 +38,7 @@
                           required: true,
                           'aria-invalid': email_err,
                           'aria-describedby': (email_err ? 'contact-email-error' : nil),
-                          class: "block w-full rounded-md border #{email_err ? 'border-red-400' : 'border-gray-300'} bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 #{email_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
+                          class: "block w-full rounded-md border #{email_err ? 'border-red-400' : 'border-[#9CAF88]'} bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 #{email_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
         <% if email_err %>
           <p id="contact-email-error" class="mt-1 text-sm text-red-600"><%= contact.errors[:email].first %></p>
         <% end %>
@@ -54,7 +54,7 @@
                               pattern: "\\d*",
                               maxlength: 15,
                               oninput: "this.value=this.value.replace(/\\D/g,'')",
-                              class: "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
+                              class: "block w-full rounded-md border border-[#9CAF88] bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#416970] focus:border-transparent" %>
       </div>
 
       <div>
@@ -68,7 +68,7 @@
                      required: true,
                      'aria-invalid': state_err,
                      'aria-describedby': (state_err ? 'contact-state-error' : nil),
-                     class: "block w-full rounded-md border #{state_err ? 'border-red-400' : 'border-gray-300'} bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:outline-none focus:ring-2 #{state_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
+                     class: "block w-full rounded-md border #{state_err ? 'border-red-400' : 'border-[#9CAF88]'} bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:outline-none focus:ring-2 #{state_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
         <% if state_err %>
           <p id="contact-state-error" class="mt-1 text-sm text-red-600"><%= contact.errors[:state].first %></p>
         <% end %>
@@ -87,7 +87,7 @@
                       minlength: 10,
                       'aria-invalid': message_err,
                       'aria-describedby': (message_err ? 'contact-message-error' : nil),
-                      class: "block w-full rounded-md border #{message_err ? 'border-red-400' : 'border-gray-300'} bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 #{message_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
+                      class: "block w-full rounded-md border #{message_err ? 'border-red-400' : 'border-[#9CAF88]'} bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 #{message_err ? 'focus:ring-red-400' : 'focus:ring-[#416970]'} focus:border-transparent" %>
       <% if message_err %>
         <p id="contact-message-error" class="mt-1 text-sm text-red-600"><%= contact.errors[:message].first %></p>
       <% end %>
