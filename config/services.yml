@@ -1,21 +1,20 @@
-services:
-  - id: 1
-    title: Individual Therapy
-    description: |
-      Individual Session: (50 min)-$150
-      Intake: (60 min)-$175
-    image: individual.jpg
-  - id: 2
-    title: Couples Therapy
-    description: |
-      Couples Session: (50 min)-$175
-      Intake: (60 min)-$200
-      Extended Session: (90 min)-$250
-    image: couples.jpg
-  - id: 3
-    title: Supervision
-    description: |
-      Throughout my career, I've been fortunate to learn from incredible mentors and supervisors who deeply shaped my growth as a therapist. Because of this, I truly value the opportunity to support and collaborate with emerging clinicians.
-      
-      If you're a new therapist looking for guidance, connection, or consultation, I'd love to connect — feel free to reach out for more details.
-    image: supervision.jpg
+- id: 1
+  title: Individual Therapy
+  description: |
+    Individual Session: (50 min)-$150
+    Intake: (60 min)-$175
+  image: individual.jpg
+- id: 2
+  title: Couples Therapy
+  description: |
+    Couples Session: (50 min)-$175
+    Intake: (60 min)-$200
+    Extended Session: (90 min)-$250
+  image: couples.jpg
+- id: 3
+  title: Supervision
+  description: |
+    Throughout my career, I've been fortunate to learn from incredible mentors and supervisors who deeply shaped my growth as a therapist. Because of this, I truly value the opportunity to support and collaborate with emerging clinicians.
+    
+    If you're a new therapist looking for guidance, connection, or consultation, I'd love to connect. Feel free to reach out for more details.
+  image: supervision.jpg

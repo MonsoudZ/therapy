@@ -51,10 +51,7 @@ class ServicesController < ApplicationController
 
   def load_services
     @loaded_services ||= begin
-      raw = YAML.load_file(Rails.root.join("config/services.yml"))
-      (raw["services"] || []).map do |s|
-        s.symbolize_keys
-      end
+      YAML.load_file(Rails.root.join('config/services.yml')).map(&:symbolize_keys)
     end
   end
 
