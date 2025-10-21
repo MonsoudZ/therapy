@@ -1,8 +1,4 @@
-<header class="flex items-center justify-between py-3 sm:py-6 border-b border-[#9CAF88]" role="navigation" aria-label="Primary">
-  <%= link_to root_path, class: "flex items-center" do %>
-    <%= image_tag "SVG File-06.svg", alt: "Columbine Therapy", class: "h-24 w-auto" %>
-  <% end %>
-
+<div class="flex items-center justify-between pb-4" role="navigation" aria-label="Primary">
   <!-- Mobile menu button -->
   <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -10,19 +6,22 @@
     </svg>
   </button>
 
-  <!-- Desktop navigation -->
-  <nav class="hidden gap-8 lg:gap-10 sm:flex">
-    <%= link_to "About", about_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
-    <%= link_to "Services", services_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
-    <%= link_to "FAQs", faqs_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
-    <%= link_to "Contact", contact_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
-  </nav>
-
-  <!-- Desktop CTA button -->
-  <div class="hidden sm:block ml-6">
+  <!-- Desktop navigation and CTA button -->
+  <div class="hidden sm:flex items-center gap-8 lg:gap-10">
+    <nav class="flex gap-8 lg:gap-10">
+      <%= link_to "About", about_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+      <%= link_to "Services", services_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+      <%= link_to "FAQs", faqs_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+      <%= link_to "Contact", contact_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+    </nav>
+    
+    <!-- Desktop CTA button -->
     <%= link_to "Book a Free Consultation", contact_path, class: "rounded-xl px-3 lg:px-6 py-2 lg:py-3 text-white font-medium hover:opacity-90 transition-opacity text-xs lg:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#416970]", style: "background-color: #416970;" %>
   </div>
-</header>
+</div>
+
+<!-- Border line below entire navigation -->
+<div class="border-b border-[#9CAF88]"></div>
 
 <!-- Mobile navigation menu -->
     <div id="mobile-menu" class="hidden sm:hidden bg-gray-50 border-t border-[#9CAF88]">
