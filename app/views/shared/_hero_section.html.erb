@@ -9,11 +9,11 @@
     <p class="text-lg sm:text-xl text-black leading-relaxed mb-8 sm:mb-12 max-w-3xl mx-auto">
       <%= sanitize(subtitle, tags: %w[em strong br span], attributes: %w[class]) %>
     </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      <div class="w-full sm:w-auto">
+    <div class="flex flex-row gap-4 justify-center items-center">
+      <div class="flex-1 sm:flex-none">
         <%= cta_button primary_button[:text], primary_button[:path] %>
       </div>
-      <div class="w-full sm:w-auto">
+      <div class="flex-1 sm:flex-none">
         <%= secondary_button secondary_button[:text], secondary_button[:path] %>
       </div>
     </div>
