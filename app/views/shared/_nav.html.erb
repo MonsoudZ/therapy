@@ -1,25 +1,23 @@
-<div class="max-w-5xl mx-auto px-4">
-  <div class="flex items-center justify-between pb-4" role="navigation" aria-label="Primary">
-    <!-- Desktop navigation and CTA button -->
-    <div class="hidden sm:flex items-center gap-8 lg:gap-10">
-      <nav class="flex gap-8 lg:gap-10">
-        <%= link_to "About", about_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
-        <%= link_to "Services", services_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
-        <%= link_to "FAQs", faqs_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
-        <%= link_to "Contact", contact_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
-      </nav>
-      
-      <!-- Desktop CTA button -->
-      <%= link_to "Book a Free Consultation", contact_path, class: "rounded-xl px-3 lg:px-6 py-2 lg:py-3 text-white font-medium hover:opacity-90 transition-opacity text-xs lg:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#416970]", style: "background-color: #416970;" %>
-    </div>
-
-    <!-- Mobile menu button -->
-    <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+<div class="flex items-center justify-between pb-4 px-4 sm:max-w-5xl sm:mx-auto" role="navigation" aria-label="Primary">
+  <!-- Desktop navigation and CTA button -->
+  <div class="hidden sm:flex items-center gap-8 lg:gap-10">
+    <nav class="flex gap-8 lg:gap-10">
+      <%= link_to "About", about_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+      <%= link_to "Services", services_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+      <%= link_to "FAQs", faqs_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+      <%= link_to "Contact", contact_path, class: "text-sm md:text-base lg:text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2 rounded-sm px-1" %>
+    </nav>
+    
+    <!-- Desktop CTA button -->
+    <%= link_to "Book a Free Consultation", contact_path, class: "rounded-xl px-3 lg:px-6 py-2 lg:py-3 text-white font-medium hover:opacity-90 transition-opacity text-xs lg:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#416970]", style: "background-color: #416970;" %>
   </div>
+
+  <!-- Mobile menu button -->
+  <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
 </div>
 
 <!-- Border line below navigation content (desktop only) -->
