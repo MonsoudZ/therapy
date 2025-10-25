@@ -1,5 +1,5 @@
-<div class="px-4 sm:max-w-5xl sm:mx-auto">
-  <div class="flex items-center justify-between pb-4" role="navigation" aria-label="Primary">
+<div role="navigation" aria-label="Primary">
+  <div class="flex items-center justify-end pb-4">
     <!-- Mobile placeholder (invisible) -->
     <div class="sm:hidden"></div>
     
@@ -13,7 +13,7 @@
       </nav>
       
       <!-- Desktop CTA button -->
-      <%= link_to "Book a Free Consultation", contact_path, class: "rounded-xl px-3 lg:px-6 py-2 lg:py-3 text-white font-medium hover:opacity-90 transition-opacity text-xs lg:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#416970]", style: "background-color: #416970;" %>
+      <%= link_to "Book a Free Consultation", contact_path, class: "rounded-xl px-3 lg:px-6 py-2 lg:py-3 text-white font-medium hover:opacity-90 transition-opacity text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#416970]", style: "background-color: #416970;" %>
     </div>
 
     <!-- Mobile menu button -->
@@ -23,14 +23,14 @@
       </svg>
     </button>
   </div>
-</div>
-
-<!-- Border line below navigation content (desktop only) -->
-<div class="hidden sm:block">
-  <div class="max-w-5xl mx-auto px-4">
+  
+  <!-- Border line below navigation area only (desktop only) -->
+  <div class="hidden sm:block">
     <div class="border-b border-[#9CAF88]"></div>
   </div>
 </div>
+</div>
+
 
 <!-- Mobile navigation menu -->
 <div id="mobile-menu" class="hidden sm:hidden bg-white">
