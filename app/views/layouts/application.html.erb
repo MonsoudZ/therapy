@@ -27,11 +27,27 @@
 
     <body class="min-h-dvh text-black antialiased" style="background-color: #FAFAFA;">
 <header class="mx-auto max-w-5xl px-4 sm:px-6" role="banner">
-  <div class="flex items-center justify-between py-4 sm:py-6">
+  <!-- Mobile header: centered logo with hamburger -->
+  <div class="sm:hidden flex items-center justify-between py-4">
+    <div class="w-8"></div> <!-- Spacer for centering -->
+    <div class="flex-1 flex justify-center">
+      <%= link_to root_path, class: "block" do %>
+        <%= image_tag "SVG File-06.svg", alt: "Columbine Therapy", class: "w-auto h-16" %>
+      <% end %>
+    </div>
+    <button class="w-8 p-1 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Desktop header -->
+  <div class="hidden sm:flex items-center justify-between py-6">
     <!-- Logo on the left -->
     <div class="flex-shrink-0">
       <%= link_to root_path, class: "block" do %>
-        <%= image_tag "SVG File-06.svg", alt: "Columbine Therapy", class: "w-auto h-16 sm:h-20", style: "height: 9rem;" %>
+        <%= image_tag "SVG File-06.svg", alt: "Columbine Therapy", class: "w-auto", style: "height: 9rem;" %>
       <% end %>
     </div>
     
@@ -41,9 +57,33 @@
     </div>
   </div>
   
+  <!-- Mobile navigation menu -->
+  <div id="mobile-menu" class="hidden sm:hidden bg-white border-t border-[#9CAF88]">
+    <nav class="flex flex-col space-y-1 p-4">
+      <%= link_to "About", about_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-3 px-2 rounded-lg hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" %>
+      <%= link_to "Services", services_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-3 px-2 rounded-lg hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" %>
+      <%= link_to "FAQs", faqs_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-3 px-2 rounded-lg hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" %>
+      <%= link_to "Contact", contact_path, class: "text-lg font-medium text-black hover:text-[#416970] hover:underline underline-offset-4 transition-all py-3 px-2 rounded-lg hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#416970] focus-visible:ring-offset-2" %>
+      <div class="pt-3">
+        <%= link_to "Book a Free Consultation", contact_path, class: "block w-full text-center rounded-xl px-6 py-3 text-white font-medium hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#416970]", style: "background-color: #416970;" %>
+      </div>
+    </nav>
+  </div>
+  
   <a href="#main" class="sr-only">Skip to content</a>
   <a id="main" class="sr-only"></a>
 </header>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const button = document.querySelector('[aria-controls="mobile-menu"]');
+    const isHidden = menu.classList.contains('hidden');
+    
+    menu.classList.toggle('hidden');
+    button.setAttribute('aria-expanded', !isHidden);
+  }
+</script>
 
 <main class="mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-10" role="main">
   <div id="flash">
