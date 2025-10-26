@@ -42,7 +42,10 @@
 
     <!-- Bottom -->
     <div class="pt-6 border-t border-[#9CAF88] text-center text-sm text-black/70">
-      <p>&copy; <%= Time.current.year %> Columbine Therapy PLLC. All rights reserved.</p>
+      <div class="flex items-center justify-center gap-3">
+        <%= image_tag "SVG File-06.svg", alt: "Columbine Therapy Logo", class: "h-9 w-auto opacity-70" %>
+        <p>&copy; <%= Time.current.year %> Columbine Therapy PLLC. All rights reserved.</p>
+      </div>
     </div>
   </div>
 </footer>
