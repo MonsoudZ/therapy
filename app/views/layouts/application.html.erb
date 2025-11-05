@@ -1,11 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title><%= content_for?(:title) ? yield(:title) : "Columbine Therapy · Compassion. Curiosity. Change." %></title>
-  <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : 'Therapy for individuals and couples in Colorado. Relational EMDR, psychodynamic, CBT/ACT, and mindfulness.' %>">
+  <title><%= content_for?(:title) ? yield(:title) : "Angela Keeley - Columbine Therapy · Compassion. Curiosity. Change." %></title>
+  <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : 'Angela Keeley, Licensed Professional Counselor (LPC), provides therapy for individuals and couples in Colorado and Washington, DC. Specializing in sex therapy, relationship therapy, trauma therapy, and EMDR.' %>">
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#6d9e8d">
+  
+  <!-- Author and SEO Meta Tags -->
+  <meta name="author" content="Angela Keeley">
+  <meta name="keywords" content="Angela Keeley, Angela Keeley therapist, Angela Keeley LPC, sex therapist Colorado, relationship therapist Colorado, trauma therapist Colorado, EMDR therapist Colorado, sex therapist Washington DC, relationship therapist Washington DC, Columbine Therapy, sex therapy, relationship therapy, trauma therapy, couples therapy, EMDR therapy, Licensed Professional Counselor Colorado, Licensed Professional Counselor Washington DC">
+  
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Columbine Therapy">
+  <meta property="og:title" content="<%= content_for?(:title) ? yield(:title) : 'Angela Keeley - Columbine Therapy' %>">
+  <meta property="og:description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : 'Angela Keeley, Licensed Professional Counselor (LPC), provides therapy for individuals and couples in Colorado and Washington, DC. Specializing in sex therapy, relationship therapy, trauma therapy, and EMDR.' %>">
+  <meta property="og:url" content="<%= request.url %>">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= content_for?(:title) ? yield(:title) : 'Angela Keeley - Columbine Therapy' %>">
+  <meta name="twitter:description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : 'Angela Keeley, Licensed Professional Counselor (LPC), provides therapy for individuals and couples in Colorado and Washington, DC.' %>">
+  
+  <!-- Schema.org Structured Data for Person/Professional -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Angela Keeley",
+    "jobTitle": "Licensed Professional Counselor",
+    "description": "Angela Keeley is a Licensed Professional Counselor (LPC) specializing in sex therapy, relationship therapy, trauma therapy, and EMDR. She provides therapy services in Colorado and Washington, DC.",
+    "url": "<%= root_url %>",
+    "email": "angela@columbinetherapy.com",
+    "telephone": "303-909-2746",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": ["Colorado", "Washington, DC"],
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.psychologytoday.com/us/therapists/angela-keeley-washington-dc/985248"
+    ],
+    "knowsAbout": [
+      "Sex Therapy",
+      "Relationship Therapy",
+      "Trauma Therapy",
+      "EMDR Therapy",
+      "Couples Therapy",
+      "Psychodynamic Therapy",
+      "Cognitive Behavioral Therapy",
+      "ACT Therapy"
+    ],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Licensed Professional Counselor (LPC)"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Columbine Therapy PLLC",
+      "url": "<%= root_url %>"
+    }
+  }
+  </script>
+  
+  <!-- Schema.org Structured Data for Professional Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Columbine Therapy PLLC",
+    "description": "Therapy services for individuals and couples in Colorado and Washington, DC. Specializing in sex therapy, relationship therapy, trauma therapy, and EMDR.",
+    "url": "<%= root_url %>",
+    "provider": {
+      "@type": "Person",
+      "name": "Angela Keeley",
+      "jobTitle": "Licensed Professional Counselor"
+    },
+    "areaServed": [
+      {
+        "@type": "State",
+        "name": "Colorado"
+      },
+      {
+        "@type": "City",
+        "name": "Washington",
+        "containedIn": {
+          "@type": "State",
+          "name": "District of Columbia"
+        }
+      }
+    ],
+    "serviceType": [
+      "Sex Therapy",
+      "Relationship Therapy",
+      "Couples Therapy",
+      "Trauma Therapy",
+      "EMDR Therapy",
+      "Individual Therapy",
+      "Psychotherapy"
+    ],
+    "telephone": "303-909-2746",
+    "email": "angela@columbinetherapy.com"
+  }
+  </script>
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
