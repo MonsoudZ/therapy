@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   # Contact routes
   get "/contact", to: "contacts_form#new"
   post "/contact", to: "contacts_form#create"
+  
+  # Sitemap for SEO
+  get "/sitemap.xml", to: "sitemap#index", format: :xml
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
